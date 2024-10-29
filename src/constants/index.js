@@ -16,17 +16,17 @@ import {
 export const clients = [
     {
       id: 1,
-      url: "https://randomuser.me/api/portraits/women/4.jpg",
+      url: "https://th.bing.com/th/id/OIP.dn-sSm17qGgT7C0yfebJNgHaHa?w=163&h=180&c=7&r=0&o=5&pid=1.7",
       alt: "Image 1",
-      name: "Srujan",
-      work: "Cyber Security Specialist",
+      name: "Abhishek RG",
+      work: "Software Engineer",
       testimonial: "The training provided was top-notch and helped me gain essential skills in cybersecurity. Highly recommend!"
     },
     {
       id: 2,
       url: "https://randomuser.me/api/portraits/men/5.jpg",
       alt: "Image 2",
-      name: "John Doe",
+      name: "Ganesh HY",
       work: "Security Analyst",
       testimonial: "An excellent program that covered all the key areas of cybersecurity. The practical exercises were very useful."
     },
@@ -66,7 +66,7 @@ export const navLinkss =[
     },
     {
         id:"Pages",
-        title:"pages"
+        title:"Internships"
     },
     {
         id:"blog",
@@ -132,19 +132,19 @@ export const FAQS = [
 
 export const Services_data = [
     {
-        name:"Vulnerability Assessment and Penetration Testing (VAPT)",
+        name:"Cybersecurity and Ethical Hacking",
         main_img:sev1,
-        description:"Launch your career in cybersecurity by mastering VAPT techniques. Learn to identify and mitigate security vulnerabilities, safeguarding organizations from both external and internal threats."
+        description:"Learn the fundamentals of cybersecurity and ethical hacking, including how to identify vulnerabilities, secure systems, and conduct penetration tests. Gain hands-on experience with real-world tools and techniques to defend against cyber threats."
     },
     {
-        name:"Network Defense and Operation",
+        name:"Website Penetration Testing",
         main_img:sev2,
-        description:"Become a specialist in network security operations. Gain expertise in configuring and maintaining secure computer networks, ensuring the integrity, confidentiality, and availability of critical data."
+        description:"Dive into the process of website penetration testing, where you will assess web applications for security flaws. Learn how to identify, exploit, and report vulnerabilities in websites to help businesses enhance their web security."
     },
     {
-        name:"Forensics",
+        name:"Mobile Application Penetration Testing",
         main_img:sev3,
-        description:"Dive into digital forensics, a crucial discipline in cybersecurity. Acquire skills in recovering, analyzing, and documenting digital evidence related to cybercrime, essential for investigating and combating digital threats."
+        description:"Focus on securing mobile apps by learning how to conduct penetration testing on Android and iOS platforms. This internship will cover various attack vectors and methods to safeguard mobile applications against potential threats."
     },
     
     

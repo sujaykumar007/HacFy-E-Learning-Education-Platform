@@ -1,5 +1,5 @@
 import { navLinkss } from "../constants";
-import { logo,  name, close, menu } from "@/assets";
+import { logo, name, close, menu } from "@/assets";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -8,6 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const Nav = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  const handleInternshipClick = () => {
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScqft8o9WGlDfMrBl2KuMMNb8dH8I_J848l3-BesiMTkfc0bA/viewform';
+  };
 
   const menuVariants = {
     hidden: { opacity: 0, x: "-100%" },
@@ -28,12 +32,12 @@ const Nav = () => {
           <img
             src={logo}
             alt="logo"
-            className="w-7  h-7 xs:w-10 xs:h-10 sm:w-10 sm:h-10 md:w-13  object-contain  rounded-sm"
+            className="w-7 h-7 xs:w-10 xs:h-10 sm:w-10 sm:h-10 md:w-13 object-contain rounded-sm"
           />
           <img
             src={name}
             alt="name"
-            className="w-32 xs:w-28 sm:w-28 sm:ml-1  md:ml-1 md:w-28 object-contain rounded-sm"
+            className="w-32 xs:w-28 sm:w-28 sm:ml-1 md:ml-1 md:w-28 object-contain rounded-sm"
           />
         </Link>
 
@@ -44,9 +48,16 @@ const Nav = () => {
               className={`${
                 active === link.title ? "text-blue-950" : "text-black"
               } hover:text-black text-sm md:text-base lg:text-lg font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
+              onClick={() => {
+                setActive(link.title);
+                if (link.title === "Internships") {
+                  handleInternshipClick();
+                }
+              }}
             >
-              <NavLink to={`${link.id}`}>{link.title}</NavLink>
+              <NavLink to={link.title === "Internships" ? "#" : `${link.id}`}>
+                {link.title}
+              </NavLink>
             </li>
           ))}
 
@@ -84,14 +95,19 @@ const Nav = () => {
                         active === link.title
                           ? "text-blue-900"
                           : "text-blue-950"
-                      } font-medium  text-base`}
+                      } font-medium text-base`}
                       onClick={() => {
-                        setToggle(!toggle);
-                        setActive(link.title);
+                        if (link.title === "Internships") {
+                          handleInternshipClick();
+                        } else {
+                          setActive(link.title);
+                          setToggle(!toggle);
+                        }
                       }}
                     >
-                      
-                      <NavLink to={`${link.id}`} className="  ">{link.title}</NavLink>
+                      <NavLink to={link.title === "Internships" ? "#" : `${link.id}`}>
+                        {link.title}
+                      </NavLink>
                     </li>
                   ))}
                 </ul>
@@ -99,8 +115,8 @@ const Nav = () => {
             )}
           </AnimatePresence>
         </div>
-        <Link to="/login" className="sm:hidden  h-full flex  justify-center items-center">
-          <button className="sm:mt-4 px-3 py-2 text-sm md:text-base  font-medium bg-red-500 hover:bg-blue-600 text-white rounded-md">
+        <Link to="/login" className="sm:hidden h-full flex justify-center items-center">
+          <button className="sm:mt-4 px-3 py-2 text-sm md:text-base font-medium bg-red-500 hover:bg-blue-600 text-white rounded-md">
             Log In
           </button>
         </Link>
