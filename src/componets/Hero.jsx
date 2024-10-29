@@ -16,20 +16,32 @@ const Hero = () => {
   };
 
   return (
-    <div
-      className=" pt-4  sm:pt-28 md:pt-40 flex bg-auto sm:bg-contain lg:bg-cover bg-opacity-20 bg-no-repeat bg-center flex-wrap lg:h-screen"
-      style={{
-        backgroundImage: `url('/src/assets/bg2.jpg')`,
-      }}
-    >
-      <div className=" md:w-3/4 lg:w-1/2 h-full text-white  px-6  md:px-20 lg:px-40 flex items-center">
+    <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-wrap lg:h-screen">
+      {/* Background Video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src="/src/assets/video.mp4" // Adjust the path as necessary
+        autoPlay
+        loop
+        muted
+      />
+
+      {/* Background Image (optional, if you want both) */}
+      {/* <div
+        className="absolute inset-0 bg-auto sm:bg-contain lg:bg-cover bg-opacity-20 bg-no-repeat bg-center"
+        style={{
+          backgroundImage: `url('/src/assets/bg2.jpg')`,
+        }}
+      ></div> */}
+
+      <div className="md:w-3/4 lg:w-1/2 h-full text-white px-6 md:px-20 lg:px-40 flex items-center z-10">
         <div>
-          <motion.div variants={textVariant()} className="">
-            <h3 className={`${styles.heroHeadText} mt-20  sm:m-auto`}>
-              Empowering cybersecurity Education .
+          <motion.div variants={textVariant()}>
+            <h3 className={`${styles.heroHeadText} mt-20 sm:m-auto`}>
+              Empowering Cybersecurity Education.
             </h3>
             <p className={`${styles.heroSubText}`}>
-              Empowering Your Digital Defense with Comprehensive Cybersecurity Education.Our Courses cover everything from the basics to advanced strategies,ensuring your're well-equipped to protect the digital world.
+              Empowering Your Digital Defense with Comprehensive Cybersecurity Education. Our Courses cover everything from the basics to advanced strategies, ensuring you're well-equipped to protect the digital world.
             </p>
           </motion.div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 pt-4 pb-5 md:pt-5">
@@ -41,12 +53,11 @@ const Hero = () => {
             </button>
 
             <Link to="/demo" className="md:block">
-              <button
-                className="bg-red-600 hidden  md:block hover:bg-red-700 text-white font-semibold text-lg px-4 py-3 rounded-lg"
-              >
+              <button className="bg-red-600 hidden md:block hover:bg-red-700 text-white font-semibold text-lg px-4 py-3 rounded-lg">
                 Request A Demo
               </button>
             </Link>
+
             {showVideo && (
               <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-75 z-50">
                 <div className="relative w-3/4 h-3/4">
