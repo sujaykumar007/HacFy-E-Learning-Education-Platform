@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { textVariant } from "@/utils/motion";
-import { heroHeadTextStyles, heroSubTextStyles, sectionHeadTextStyles, sectionSubTextStyles, styles } from "@/style";
+import { styles } from "@/style"; // Ensure this is correctly imported
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 
@@ -20,17 +20,17 @@ const Hero = () => {
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/src/assets/video.mp4" // Adjust the path as necessary
+        src="/assets/video.mp4" // Use a path relative to the public folder
         autoPlay
         loop
         muted
       />
 
-      {/* Background Image (optional, if you want both) */}
+      {/* Uncomment this if you want to use a background image */}
       {/* <div
         className="absolute inset-0 bg-auto sm:bg-contain lg:bg-cover bg-opacity-20 bg-no-repeat bg-center"
         style={{
-          backgroundImage: `url('/src/assets/bg2.jpg')`,
+          backgroundImage: `url('/assets/bg2.jpg')`, // Path relative to the public folder
         }}
       ></div> */}
 
