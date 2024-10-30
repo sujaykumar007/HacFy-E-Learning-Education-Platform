@@ -39,7 +39,7 @@ const Hero = () => {
         <div>
           <motion.div variants={textVariant()}>
             <h3 className={`${styles.heroHeadText} mt-20 sm:m-auto`}>
-              Empowering Cybersecurity Education...
+              Empowering Cybersecurity Education.
             </h3>
             <p className={`${styles.heroSubText}`}>
               Empowering Your Digital Defense with Comprehensive Cybersecurity
