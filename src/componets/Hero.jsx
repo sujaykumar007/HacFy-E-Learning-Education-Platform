@@ -3,6 +3,8 @@ import { textVariant } from "@/utils/motion";
 import { styles } from "@/style"; // Ensure this is correctly imported
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import videoSrc from "@/assets/video.mp4";
+
 
 const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
@@ -19,14 +21,13 @@ const Hero = () => {
     <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-wrap lg:h-screen">
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/assets/video.mp4" // Use a path relative to the public folder
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        src={videoSrc}
         autoPlay
         loop
         muted
       />
-
-      {/* Uncomment this if you want to use a background image */}
+      
       {/* <div
         className="absolute inset-0 bg-auto sm:bg-contain lg:bg-cover bg-opacity-20 bg-no-repeat bg-center"
         style={{
@@ -41,7 +42,10 @@ const Hero = () => {
               Empowering Cybersecurity Education.
             </h3>
             <p className={`${styles.heroSubText}`}>
-              Empowering Your Digital Defense with Comprehensive Cybersecurity Education. Our Courses cover everything from the basics to advanced strategies, ensuring you're well-equipped to protect the digital world.
+              Empowering Your Digital Defense with Comprehensive Cybersecurity
+              Education. Our Courses cover everything from the basics to
+              advanced strategies, ensuring you're well-equipped to protect the
+              digital world.
             </p>
           </motion.div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 pt-4 pb-5 md:pt-5">
