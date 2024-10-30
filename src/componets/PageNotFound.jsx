@@ -3,7 +3,7 @@ import { Button } from 'flowbite-react';
 
 const PageNotFound = () => {
   const handleInternshipClick = () => {
-    window.location.href = 'https://www.google.com';
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScqft8o9WGlDfMrBl2KuMMNb8dH8I_J848l3-BesiMTkfc0bA/viewform?pli=1';
   };
 
   return (
