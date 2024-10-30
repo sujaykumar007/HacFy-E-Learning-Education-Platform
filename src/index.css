@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 body {
   font-family: "Poppins", sans-serif;
@@ -86,12 +86,9 @@ html {
 .pattern {
   backdrop-filter: saturate(180%) blur(20px);
 }
+
 .colour-filter {
   background-image: url('/src/assets/bg2.jpg');
-  /* filter: hue-rotate(180deg) brightness(0.7);
-  filter: hue-rotate(90deg) brightness(0.7);
-  filter: hue-rotate(80deg) brightness(0.7); 
-  /* filter: opacity(0.6) drop-shadow(0 0 0 #0f172a) saturate(500%);  */
 }
 
 .button {
@@ -108,10 +105,10 @@ html {
   background-color: red;
   color: #0f172a00;
 }
+
 .shadows {
   box-shadow: rgba(253, 74, 74, 0.2) 0px 7px 29px 0px;
 }
-
 
 .app-container {
   position: relative;
@@ -128,19 +125,22 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1000; /* Ensure this is above all content */
 }
 
 .video-container {
-  position: relative;
-  width: 560px;
-  height: 315px;
+  position: absolute; /* Change to absolute for proper positioning */
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the full screen */
+  height: 100%; /* Cover the full screen */
+  z-index: 500; /* Ensure it's behind the overlay but above other content */
 }
 
-.red{
+.red {
   color: red;
 }
