@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import {arrow} from '../assets'
+import axios from 'axios'; // Import axios
+import { arrow } from '../assets';
+
 const LoginPage = () => {
-  // State variables for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Handle input changes
+  const [error, setError] = useState('');
+
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  
+
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // You can make an API call here to authenticate the user
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { token } = response.data;
+
+      // Save the token in local storage
+      localStorage.setItem('token', token);
+
+      // Redirect user or perform other actions as needed
+      console.log('Login successful');
+    } catch (error) {
+      // Handle error (e.g., wrong credentials)
+      setError('Invalid email or password');
+    }
   };
 
   return (
@@ -27,7 +37,9 @@ const LoginPage = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800"
     >
-    <Link to='/' className=' absolute top-4 left-4 text-blue-700  hover:underline duration-300 hover:fill-red-800'> <img src={arrow} className='top-3 w-11' alt="" /></Link>
+      <Link to="/" className="absolute top-4 left-4 text-blue-700 hover:underline duration-300 hover:fill-red-800">
+        <img src={arrow} className="top-3 w-11" alt="" />
+      </Link>
 
       <div className="bg-gray-900 p-8 rounded-lg shadow-md w-full max-w-md">
         <div className="text-center mb-6">
@@ -36,8 +48,10 @@ const LoginPage = () => {
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="shadow-sm -space-y-px">
-            <div className='rounded-lg'>
-              <label htmlFor="email-address" className="sr-only">Email address</label>
+            <div className="rounded-lg">
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
               <input
                 id="email-address"
                 name="email"
@@ -50,8 +64,10 @@ const LoginPage = () => {
                 placeholder="Email address"
               />
             </div>
-            <div className='pt-6'>
-              <label htmlFor="password" className="sr-only">Password</label>
+            <div className="pt-6">
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -65,6 +81,8 @@ const LoginPage = () => {
               />
             </div>
           </div>
+
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
           <div className="flex items-center justify-between">
             <div className="flex items-center">
