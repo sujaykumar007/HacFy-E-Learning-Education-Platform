@@ -5,10 +5,222 @@
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HACFY</title>
+
+    <!-- CSS Styles for Cursor Animation -->
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      html, body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Disable overflow on the root body */
+          height: 100%;
+          width: 100%;
+      }
+
+      #root {
+          width: 100vw;
+          height: 100vh;
+          overflow-y: auto; /* Enable scrolling within the root */
+      }
+
+      canvas {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none; /* Ensures the canvas doesn't block clicks */
+      }
+
+      #cursorCanvas {
+          position: fixed;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+      }
+    </style>
   </head>
+  
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Main content of the website goes here -->
+    </div>
+    <canvas id="cursorCanvas"></canvas> <!-- Canvas for the cursor animation -->
+
+    <!-- JavaScript for Cursor Animation -->
+    <script>
+      const canvas = document.getElementById('cursorCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Set canvas size
+      function setCanvasSize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+      }
+      setCanvasSize();
+      window.addEventListener('resize', setCanvasSize);
+
+      const points = [];
+      const maxPoints = 15;
+      const spacing = 18;
+      let currentPoint = { x: 0, y: 0 };
+      let hue = 0;
+      let isMoving = false;
+      let restoreTimer = null;
+      let rotationAngle = 0;
+
+      // Track mouse position
+      let mouseX = 0;
+      let mouseY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          isMoving = true;
+          
+          if (restoreTimer) clearTimeout(restoreTimer);
+          
+          restoreTimer = setTimeout(() => {
+              isMoving = false;
+              // Reset positions for circular animation
+              points.forEach((point, index) => {
+                  const angle = (index / maxPoints) * Math.PI * 2;
+                  point.angle = angle;
+              });
+          }, 100);
+      });
+
+      function lerp(start, end, t) {
+          return start * (1 - t) + end * t;
+      }
+
+      function getRandomChar() {
+          const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+          return chars[Math.floor(Math.random() * chars.length)];
+      }
+
+      function calculateDistance(x1, y1, x2, y2) {
+          return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+      }
+
+      function drawArrow(x, y, size) {
+          ctx.save();
+          
+          // Arrow settings
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = isMoving ? '#ff3366' : '#000000';
+          ctx.fillStyle = isMoving ? '#ff3366' : '#000000';
+          
+          // Draw arrow
+          ctx.beginPath();
+          
+          // Arrow head
+          ctx.moveTo(x, y - size); // Top point
+          ctx.lineTo(x - size/2, y); // Bottom left
+          ctx.lineTo(x + size/2, y); // Bottom right
+          ctx.closePath();
+          
+          // Fill and stroke the arrow
+          ctx.fill();
+          ctx.stroke();
+          
+          ctx.restore();
+      }
+
+      function animate() {
+          currentPoint.x = lerp(currentPoint.x, mouseX, 0.15);
+          currentPoint.y = lerp(currentPoint.y, mouseY, 0.15);
+
+          if (isMoving) {
+              // Trail behavior while moving
+              if (points.length === 0 || 
+                  calculateDistance(
+                      points[points.length - 1].x, 
+                      points[points.length - 1].y, 
+                      currentPoint.x, 
+                      currentPoint.y
+                  ) > spacing) {
+                  points.push({ 
+                      x: currentPoint.x, 
+                      y: currentPoint.y,
+                      char: getRandomChar(),
+                      angle: 0,
+                      targetX: currentPoint.x,
+                      targetY: currentPoint.y
+                  });
+              }
+              
+              // Colorful trail while moving
+              points.forEach(point => {
+                  point.color = `hsla(${hue}, 100%, 65%, 0.8)`;
+              });
+          } else {
+              // Circular rotation when stopped
+              rotationAngle += 0.02; // Speed of rotation
+              const radius = 30; // Size of the circle
+              
+              points.forEach((point, index) => {
+                  const individualAngle = point.angle + rotationAngle;
+                  point.targetX = mouseX + Math.cos(individualAngle) * radius;
+                  point.targetY = mouseY + Math.sin(individualAngle) * radius;
+                  
+                  point.x = lerp(point.x, point.targetX, 0.1);
+                  point.y = lerp(point.y, point.targetY, 0.1);
+                  
+                  // Alternate between black and white
+                  point.color = index % 2 === 0 ? 
+                      `rgba(255, 255, 255, 0.8)` : 
+                      `rgba(0, 0, 0, 0.8)`;
+              });
+          }
+          
+          if (points.length > maxPoints) {
+              points.shift();
+          }
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Draw characters
+          points.forEach((point, index) => {
+              const fontSize = 20;
+              ctx.font = `bold ${fontSize}px monospace`;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              
+              ctx.fillStyle = point.color;
+              
+              // Update characters occasionally
+              if (Math.random() < 0.03) {
+                  point.char = getRandomChar();
+              }
+              
+              ctx.fillText(point.char, point.x, point.y);
+          });
+
+          // Draw arrow cursor
+          drawArrow(mouseX, mouseY, 8); // 8 is the size of the arrow
+
+          hue = (hue + 2) % 360;
+          requestAnimationFrame(animate);
+      }
+
+      animate();
+    </script>
+
+    <!-- Existing Scripts for Locomotive Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script>
+      // Initialize Locomotive Scroll for smooth scrolling
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector('#root'),
+        smooth: true
+      });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
     <script src="/152.66f373e7dbd2a6a4.js"></script>
     <script src="/673-13598ee90da01a8e.js"></script>
