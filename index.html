@@ -17,7 +17,7 @@
       html, body {
           margin: 0;
           padding: 0;
-          overflow: hidden; /* Disable overflow on the root body */
+          overflow: hidden;
           height: 100%;
           width: 100%;
       }
@@ -25,7 +25,7 @@
       #root {
           width: 100vw;
           height: 100vh;
-          overflow-y: auto; /* Enable scrolling within the root */
+          overflow-y: auto;
       }
 
       canvas {
@@ -34,7 +34,7 @@
           left: 0;
           width: 100vw;
           height: 100vh;
-          pointer-events: none; /* Ensures the canvas doesn't block clicks */
+          pointer-events: none;
       }
 
       #cursorCanvas {
@@ -57,7 +57,6 @@
       const canvas = document.getElementById('cursorCanvas');
       const ctx = canvas.getContext('2d');
 
-      // Set canvas size
       function setCanvasSize() {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
@@ -67,14 +66,13 @@
 
       const points = [];
       const maxPoints = 15;
-      const spacing = 18;
+      const spacing = 15;
       let currentPoint = { x: 0, y: 0 };
       let hue = 0;
       let isMoving = false;
       let restoreTimer = null;
       let rotationAngle = 0;
 
-      // Track mouse position
       let mouseX = 0;
       let mouseY = 0;
 
@@ -87,7 +85,6 @@
           
           restoreTimer = setTimeout(() => {
               isMoving = false;
-              // Reset positions for circular animation
               points.forEach((point, index) => {
                   const angle = (index / maxPoints) * Math.PI * 2;
                   point.angle = angle;
@@ -99,9 +96,9 @@
           return start * (1 - t) + end * t;
       }
 
+      // Function to randomly return '0' or '1'
       function getRandomChar() {
-          const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-          return chars[Math.floor(Math.random() * chars.length)];
+          return Math.random() < 0.5 ? '0' : '1';
       }
 
       function calculateDistance(x1, y1, x2, y2) {
@@ -111,24 +108,27 @@
       function drawArrow(x, y, size) {
           ctx.save();
           
-          // Arrow settings
           ctx.lineWidth = 2;
-          ctx.strokeStyle = isMoving ? '#ff3366' : '#000000';
-          ctx.fillStyle = isMoving ? '#ff3366' : '#000000';
           
-          // Draw arrow
+          if (isMoving) {
+              ctx.strokeStyle = '#00ff00';
+              ctx.fillStyle = '#00ff00';
+              ctx.shadowColor = '#00ff00';
+              ctx.shadowBlur = 6;
+          } else {
+              ctx.strokeStyle = '#00cc00';
+              ctx.fillStyle = '#00cc00';
+              ctx.shadowColor = '#00ff00';
+              ctx.shadowBlur = 3;
+          }
+          
           ctx.beginPath();
-          
-          // Arrow head
-          ctx.moveTo(x, y - size); // Top point
-          ctx.lineTo(x - size/2, y); // Bottom left
-          ctx.lineTo(x + size/2, y); // Bottom right
+          ctx.moveTo(x, y - size);
+          ctx.lineTo(x - size/2, y);
+          ctx.lineTo(x + size/2, y);
           ctx.closePath();
-          
-          // Fill and stroke the arrow
           ctx.fill();
           ctx.stroke();
-          
           ctx.restore();
       }
 
@@ -137,14 +137,8 @@
           currentPoint.y = lerp(currentPoint.y, mouseY, 0.15);
 
           if (isMoving) {
-              // Trail behavior while moving
               if (points.length === 0 || 
-                  calculateDistance(
-                      points[points.length - 1].x, 
-                      points[points.length - 1].y, 
-                      currentPoint.x, 
-                      currentPoint.y
-                  ) > spacing) {
+                  calculateDistance(points[points.length - 1].x, points[points.length - 1].y, currentPoint.x, currentPoint.y) > spacing) {
                   points.push({ 
                       x: currentPoint.x, 
                       y: currentPoint.y,
@@ -155,14 +149,12 @@
                   });
               }
               
-              // Colorful trail while moving
               points.forEach(point => {
                   point.color = `hsla(${hue}, 100%, 65%, 0.8)`;
               });
           } else {
-              // Circular rotation when stopped
-              rotationAngle += 0.02; // Speed of rotation
-              const radius = 30; // Size of the circle
+              rotationAngle += 0.02;
+              const radius = 30;
               
               points.forEach((point, index) => {
                   const individualAngle = point.angle + rotationAngle;
@@ -172,10 +164,7 @@
                   point.x = lerp(point.x, point.targetX, 0.1);
                   point.y = lerp(point.y, point.targetY, 0.1);
                   
-                  // Alternate between black and white
-                  point.color = index % 2 === 0 ? 
-                      `rgba(255, 255, 255, 0.8)` : 
-                      `rgba(0, 0, 0, 0.8)`;
+                  point.color = index % 2 === 0 ? `rgba(255, 255, 255, 0.8)` : `rgba(0, 0, 0, 0.8)`;
               });
           }
           
@@ -185,16 +174,13 @@
 
           ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-          // Draw characters
-          points.forEach((point, index) => {
+          points.forEach((point) => {
               const fontSize = 20;
               ctx.font = `bold ${fontSize}px monospace`;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
-              
               ctx.fillStyle = point.color;
               
-              // Update characters occasionally
               if (Math.random() < 0.03) {
                   point.char = getRandomChar();
               }
@@ -202,9 +188,7 @@
               ctx.fillText(point.char, point.x, point.y);
           });
 
-          // Draw arrow cursor
-          drawArrow(mouseX, mouseY, 8); // 8 is the size of the arrow
-
+          drawArrow(mouseX, mouseY, 8);
           hue = (hue + 2) % 360;
           requestAnimationFrame(animate);
       }
@@ -212,10 +196,9 @@
       animate();
     </script>
 
-    <!-- Existing Scripts for Locomotive Scroll -->
+    <!-- Locomotive Scroll Script for Smooth Scrolling -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
     <script>
-      // Initialize Locomotive Scroll for smooth scrolling
       const scroll = new LocomotiveScroll({
         el: document.querySelector('#root'),
         smooth: true
