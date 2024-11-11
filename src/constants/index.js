@@ -12,6 +12,7 @@ import {
     sev3
 } from "@/assets"
 
+    // FILE RELATED ALL TESTIMONIAL , SERVICES, FAQ ETC TEXT IS HERE 
 
 export const clients = [
     {

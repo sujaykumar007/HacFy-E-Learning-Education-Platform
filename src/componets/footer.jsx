@@ -3,6 +3,8 @@ import { phone, logo } from "../assets";
 import { footerQlink, Resources ,Contact_link} from "@/constants";
 import { styles } from "@/style";
 const Footer = () => {
+
+    // Footer Section 
   return (
     <footer className="bg-gray-800 text-white px-6 pb-4 ">
       <div className="container mx-auto w-full flex flex-wrap border-b-2  border-gray-500 pb-6 p-2 justify-between items-center">
@@ -52,7 +54,7 @@ const Footer = () => {
         <div className="w-full  hidden  lg:block md:w-1/3 lg:pl-24 xl:pl-36 mb-8 md:mb-0">
           <h2 className="text-xl font-bold">Contact Us</h2>
           <p>Mangalore, DK, Karnataka</p>
-          <p>info.hacfy.co@gmail.com</p>
+          <p>info.hacfy@gmail.com</p>
           <p>+91 8660767853</p>
         </div>
         <div className="w-full md:w-1/3 flex flex-wrap">
