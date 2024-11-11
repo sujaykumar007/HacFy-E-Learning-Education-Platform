@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import videoSrc from "@/assets/video.mp4";
 
-
+  // MAIN HERO PAGE
 const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
 

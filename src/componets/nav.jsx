@@ -9,7 +9,8 @@ const Nav = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
-  const handleInternshipClick = () => {
+  const handleInternshipClick = () => { 
+      // INTERNSHIP FORM LINK IS BELOW 
     window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScqft8o9WGlDfMrBl2KuMMNb8dH8I_J848l3-BesiMTkfc0bA/viewform';
   };
 
