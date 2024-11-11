@@ -2,12 +2,45 @@ import { motion } from "framer-motion";
 import { textVariant } from "@/utils/motion";
 import { styles } from "@/style"; // Ensure this is correctly imported
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import videoSrc from "@/assets/video.mp4";
+import React, { useState, useEffect, useRef } from "react";
+import videoSrc from "@/assets/video.mp4"; // Replace with your actual video path
 
-  // MAIN HERO PAGE
+// MAIN HERO PAGE
 const Hero = () => {
   const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef(null);
+
+  // Lazy loading: Play video when it comes into the viewport
+  const handleVideoLoad = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  // Intersecting observer to detect when video comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            handleVideoLoad(); // Start the video when it enters the viewport
+            observer.disconnect(); // Stop observing after the video starts
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => {
+      if (videoRef.current) {
+        observer.disconnect();
+      }
+    };
+  }, []);
 
   const handleButtonClick = () => {
     setShowVideo(true);
@@ -19,21 +52,17 @@ const Hero = () => {
 
   return (
     <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-wrap lg:h-screen">
-      {/* Background Video */}
+      {/* Background Video (lazy load) */}
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         src={videoSrc}
         autoPlay
         loop
         muted
+        preload="none" // Only load the video when it is about to be played
+        playsInline
       />
-
-      {/* <div
-        className="absolute inset-0 bg-auto sm:bg-contain lg:bg-cover bg-opacity-20 bg-no-repeat bg-center"
-        style={{
-          backgroundImage: `url('/assets/bg2.jpg')`, // Path relative to the public folder
-        }}
-      ></div> */}
 
       <div className="md:w-3/4 lg:w-1/2 h-full text-white px-6 md:px-20 lg:px-40 flex items-center z-10">
         <div>
