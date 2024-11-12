@@ -21,9 +21,9 @@ import {
   RegistrationPage,
   PageNotFound,
   ResetPassword,
-  InteractiveGradient,
   ContactMe,
-  Internship
+  Internship,
+  Blog
 } from "./components";
 
 const router = createBrowserRouter([
@@ -79,6 +79,10 @@ const router = createBrowserRouter([
   {
     path: "/internships",
     element: <Internship />
+  },
+  {
+    path: "/blog",
+    element:<Blog/>
   }
 ]);
 
