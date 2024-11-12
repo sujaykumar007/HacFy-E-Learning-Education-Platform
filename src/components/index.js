@@ -18,6 +18,6 @@ import ContactMe from './contact'
 import Internship from './internship'
 import Blog from './blog'
     
-//MAIN INDEX TO IMPORT RECENTLY CREATED COMPONENTS
+//MAIN INDEX TO IMPORT RECENTLY CREATED COMPONENTS OR NEW ADDED WEB PAGES
 
 export { About, Hero, Nav, FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, ContactMe, Internship, Blog } 

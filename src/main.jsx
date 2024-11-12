@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+//IMPORT COMPONENTS HERE IF NEW PAGES ARE ADDED
 
 import {
   About,

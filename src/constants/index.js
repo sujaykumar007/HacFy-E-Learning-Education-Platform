@@ -82,7 +82,7 @@ export const navLinks = [
 
 export const CountUps = [
     {
-        num: "20",
+        num: "25",
         sig: "+",
         define: "Workshops"
     },
