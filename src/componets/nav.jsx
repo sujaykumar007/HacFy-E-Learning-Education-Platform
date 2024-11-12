@@ -11,7 +11,7 @@ const Nav = () => {
 
   const handleInternshipClick = () => { 
       // INTERNSHIP FORM LINK IS BELOW 
-    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScqft8o9WGlDfMrBl2KuMMNb8dH8I_J848l3-BesiMTkfc0bA/viewform';
+    window.location.href = 'https://hacfyinternships.netlify.app/';
   };
 
   const menuVariants = {
