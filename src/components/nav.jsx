@@ -1,4 +1,4 @@
-import { navLinkss } from "../constants";
+import { navLinks } from "../constants";
 import { logo, name, close, menu } from "@/assets";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -9,10 +9,6 @@ const Nav = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
-  const handleInternshipClick = () => { 
-      // INTERNSHIP FORM LINK IS BELOW 
-    window.location.href = 'https://hacfyinternships.netlify.app/';
-  };
 
   const menuVariants = {
     hidden: { opacity: 0, x: "-100%" },
@@ -43,20 +39,16 @@ const Nav = () => {
         </Link>
 
         <ul className="list-none font-bold hidden sm:flex flex-row justify-center items-center gap-4 md:gap-10">
-          {navLinkss.map((link) => (
+          {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${
-                active === link.title ? "text-blue-950" : "text-black"
-              } hover:text-black text-sm md:text-base lg:text-lg font-medium cursor-pointer`}
+              className={`${active === link.title ? "text-blue-950" : "text-black"
+                } hover:text-black text-sm md:text-base lg:text-lg font-medium cursor-pointer`}
               onClick={() => {
                 setActive(link.title);
-                if (link.title === "Internships") {
-                  handleInternshipClick();
-                }
               }}
             >
-              <NavLink to={link.title === "Internships" ? "#" : `${link.id}`}>
+              <NavLink to={`/${link.id}`}>
                 {link.title}
               </NavLink>
             </li>
@@ -89,24 +81,21 @@ const Nav = () => {
                 className="p-6 absolute top-16 left-0 mx-2 my-2 min-w-[140px] z-10 rounded-xl bg-white shadow-lg"
               >
                 <ul className="list-none flex justify-end items-start flex-col gap-2 ">
-                  {navLinkss.map((link) => (
+                  {navLinks.map((link) => (
                     <li
                       key={link.id}
-                      className={`${
-                        active === link.title
-                          ? "text-blue-900"
-                          : "text-blue-950"
-                      } font-medium text-base`}
+                      className={`${active === link.title
+                        ? "text-blue-900"
+                        : "text-blue-950"
+                        } font-medium text-base`}
                       onClick={() => {
-                        if (link.title === "Internships") {
-                          handleInternshipClick();
-                        } else {
-                          setActive(link.title);
-                          setToggle(!toggle);
-                        }
+
+                        setActive(link.title);
+                        setToggle(!toggle);
+
                       }}
                     >
-                      <NavLink to={link.title === "Internships" ? "#" : `${link.id}`}>
+                      <NavLink to={`${link.id}`}>
                         {link.title}
                       </NavLink>
                     </li>

@@ -12,11 +12,11 @@ import ClientSlider from './weareworkingwith'
 import Path from './path'
 import LoginPage from './Login'
 import RegistrationPage from './register'
-import PageNotFound from './PageNotFound'
+import PageNotFound from './internship'
 import ResetPassword from './resetpassword'
 import ContactMe from './contact'
-
+import Internship from './internship'
 import InteractiveGradient from './InteractiveGradient'
 
 
-export {About,Hero,Nav,FAQs,Footer,Number,Team,Project,Wedo,Services,ClientSlider,Path,LoginPage,RegistrationPage,PageNotFound,ResetPassword,InteractiveGradient,ContactMe} 
+export { About, Hero, Nav, FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, InteractiveGradient, ContactMe, Internship } 
