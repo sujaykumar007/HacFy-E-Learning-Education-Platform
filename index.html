@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>     
-     <!-- THIS FILE IS RELATED TO CURSOR ANIMATION TRAIL OVER WEBSITE -->
+    <!-- THIS FILE IS RELATED TO CURSOR ANIMATION TRAIL OVER WEBSITE -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,17 +65,10 @@
       setCanvasSize();
       window.addEventListener('resize', setCanvasSize);
 
-      const points = [];
-      const maxPoints = 15;
-      const spacing = 15;
-      let currentPoint = { x: 0, y: 0 };
-      let hue = 0;
-      let isMoving = false;
-      let restoreTimer = null;
-      let rotationAngle = 0;
-
       let mouseX = 0;
       let mouseY = 0;
+      let isMoving = false;
+      let restoreTimer = null;
 
       window.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
@@ -86,24 +79,11 @@
           
           restoreTimer = setTimeout(() => {
               isMoving = false;
-              points.forEach((point, index) => {
-                  const angle = (index / maxPoints) * Math.PI * 2;
-                  point.angle = angle;
-              });
           }, 100);
       });
 
       function lerp(start, end, t) {
           return start * (1 - t) + end * t;
-      }
-
-      // Function to randomly return '0' or '1'
-      function getRandomChar() {
-          return Math.random() < 0.5 ? '0' : '1';
-      }
-
-      function calculateDistance(x1, y1, x2, y2) {
-          return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
       }
 
       function drawArrow(x, y, size) {
@@ -134,63 +114,13 @@
       }
 
       function animate() {
-          currentPoint.x = lerp(currentPoint.x, mouseX, 0.15);
-          currentPoint.y = lerp(currentPoint.y, mouseY, 0.15);
-
-          if (isMoving) {
-              if (points.length === 0 || 
-                  calculateDistance(points[points.length - 1].x, points[points.length - 1].y, currentPoint.x, currentPoint.y) > spacing) {
-                  points.push({ 
-                      x: currentPoint.x, 
-                      y: currentPoint.y,
-                      char: getRandomChar(),
-                      angle: 0,
-                      targetX: currentPoint.x,
-                      targetY: currentPoint.y
-                  });
-              }
-              
-              points.forEach(point => {
-                  point.color = `hsla(${hue}, 100%, 65%, 0.8)`;
-              });
-          } else {
-              rotationAngle += 0.02;
-              const radius = 30;
-              
-              points.forEach((point, index) => {
-                  const individualAngle = point.angle + rotationAngle;
-                  point.targetX = mouseX + Math.cos(individualAngle) * radius;
-                  point.targetY = mouseY + Math.sin(individualAngle) * radius;
-                  
-                  point.x = lerp(point.x, point.targetX, 0.1);
-                  point.y = lerp(point.y, point.targetY, 0.1);
-                  
-                  point.color = index % 2 === 0 ? `rgba(255, 255, 255, 0.8)` : `rgba(0, 0, 0, 0.8)`;
-              });
-          }
-          
-          if (points.length > maxPoints) {
-              points.shift();
-          }
+          const currentPoint = {
+              x: lerp(mouseX, mouseX, 0.15),
+              y: lerp(mouseY, mouseY, 0.15)
+          };
 
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-          points.forEach((point) => {
-              const fontSize = 20;
-              ctx.font = `bold ${fontSize}px monospace`;
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillStyle = point.color;
-              
-              if (Math.random() < 0.03) {
-                  point.char = getRandomChar();
-              }
-              
-              ctx.fillText(point.char, point.x, point.y);
-          });
-
           drawArrow(mouseX, mouseY, 8);
-          hue = (hue + 2) % 360;
           requestAnimationFrame(animate);
       }
 

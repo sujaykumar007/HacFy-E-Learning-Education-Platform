@@ -9,6 +9,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 
+
 export default function internship() {
   const roadmapData = [
     {
@@ -116,3 +117,4 @@ export default function internship() {
     </div>
   );
 }
+
