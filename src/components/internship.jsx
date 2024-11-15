@@ -313,7 +313,7 @@ and equip yourself with the skills that will make you a cybersecurity expert!
             <div className="space-y-4">
               <div className="flex items-center">
                 <img 
-                  src="/logo.svg"
+                  src="./src/assets/hacfy1.png"
                   alt="HacFy Logo" 
                   className="h-8 w-8 mr-2"
                 />
