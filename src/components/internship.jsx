@@ -74,7 +74,11 @@ export default function internship() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <Shield className="h-8 w-8 mr-2" />
+              <img 
+                src="./src/assets/hacfy1.png"
+                alt="HacFy Logo" 
+                className="h-8 w-8 mr-2"
+              />
               <span className="font-bold text-xl">HacFy</span>
             </div>
 
@@ -308,7 +312,11 @@ and equip yourself with the skills that will make you a cybersecurity expert!
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center">
-                <Shield className="h-8 w-8 mr-2" />
+                <img 
+                  src="/logo.svg"
+                  alt="HacFy Logo" 
+                  className="h-8 w-8 mr-2"
+                />
                 <span className="font-bold text-xl">HacFy</span>
               </div>
               <p className="text-white/80">
