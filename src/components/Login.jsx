@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/login', { email, password });
       const { token } = response.data;
 
       // Save the token in local storage
