@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/login', { email, password });
+      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
       const { token } = response.data;
 
       // Save the token in local storage
@@ -24,6 +24,7 @@ const LoginPage = () => {
 
       // Redirect user or perform other actions as needed
       console.log('Login successful');
+      //navigation should be added here
     } catch (error) {
       // Handle error (e.g., wrong credentials)
       setError('Invalid email or password');
