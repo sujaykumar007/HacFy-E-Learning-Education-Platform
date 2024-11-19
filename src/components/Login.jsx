@@ -16,6 +16,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(email,password);
       const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
       const { token } = response.data;
 
