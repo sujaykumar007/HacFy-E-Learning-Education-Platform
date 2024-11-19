@@ -12,8 +12,7 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Mail,
-  ArrowUp
+  Mail
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -27,23 +26,6 @@ const marqueeStyles = {
 
 export default function internship() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [showScrollTop, setShowScrollTop] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   const roadmapData = [
     {
@@ -489,17 +471,6 @@ and equip yourself with the skills that will make you a cybersecurity expert!
           </div>
         </div>
       </footer>
-
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showScrollTop ? 1 : 0 }}
-        onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 rounded-full bg-[#00ff00] text-black shadow-lg shadow-[#00ff00]/20 hover:bg-[#00ff00]/80 transition-all duration-300 hover:scale-110 z-[9999]"
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.5 }}
-      >
-        <ArrowUp className="w-6 h-6" />
-      </motion.button>
     </>
   );
 }
