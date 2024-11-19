@@ -12,7 +12,8 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Mail
+  Mail,
+  ArrowUp
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -26,7 +27,24 @@ const marqueeStyles = {
 
 export default function internship() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const roadmapData = [
     {
       title: "Uncover the Digital Battlefield!",
@@ -144,6 +162,18 @@ export default function internship() {
           )}
         </div>
       </header>
+
+      {/* Back Button */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.button
+          onClick={() => window.history.back()}
+          className="mt-4 w-10 h-10 rounded-full bg-[#03060F] border-2 border-[#00ff00] flex items-center justify-center hover:bg-[#00ff00]/10 transition-colors group"
+          whileHover={{ x: -5 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <ChevronRight className="h-5 w-5 rotate-180 text-[#00ff00] group-hover:text-[#00ff00]" />
+        </motion.button>
+      </div>
 
       {/* Hero Section */}
       <div className="bg-[#03060F] py-20 border-b border-[#00ff00]/20 w-full">
@@ -323,7 +353,7 @@ and equip yourself with the skills that will make you a cybersecurity expert!
           <div className="mt-16 text-center">
             <p className="text-[#00ff00]/80">
               &#62; Ready to start your cybersecurity journey? This comprehensive program will give you
-              the foundation you need to excel in the field_
+              the foundation you need to excel in the field.
             </p>
           </div>
 
@@ -391,18 +421,65 @@ and equip yourself with the skills that will make you a cybersecurity expert!
             <div>
               <h3 className="font-semibold mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="hover:text-[#00ff00] transition-colors">
-                  <Github className="h-6 w-6" />
-                </a>
-                <a href="#" className="hover:text-[#00ff00] transition-colors">
-                  <Linkedin className="h-6 w-6" />
-                </a>
-                <a href="#" className="hover:text-[#00ff00] transition-colors">
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a href="#" className="hover:text-[#00ff00] transition-colors">
-                  <Mail className="h-6 w-6" />
-                </a>
+                <motion.a 
+                  href="#" 
+                  className="hover:text-[#00ff00] transition-colors relative group"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span
+                    className="absolute -inset-2 bg-[#00ff00]/10 rounded-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <Github className="h-6 w-6 relative z-10" />
+                </motion.a>
+                
+                <motion.a 
+                  href="#" 
+                  className="hover:text-[#00ff00] transition-colors relative group"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span
+                    className="absolute -inset-2 bg-[#00ff00]/10 rounded-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <Linkedin className="h-6 w-6 relative z-10" />
+                </motion.a>
+                
+                <motion.a 
+                  href="#" 
+                  className="hover:text-[#00ff00] transition-colors relative group"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span
+                    className="absolute -inset-2 bg-[#00ff00]/10 rounded-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <Twitter className="h-6 w-6 relative z-10" />
+                </motion.a>
+                
+                <motion.a 
+                  href="#" 
+                  className="hover:text-[#00ff00] transition-colors relative group"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span
+                    className="absolute -inset-2 bg-[#00ff00]/10 rounded-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <Mail className="h-6 w-6 relative z-10" />
+                </motion.a>
               </div>
             </div>
           </div>
@@ -412,6 +489,17 @@ and equip yourself with the skills that will make you a cybersecurity expert!
           </div>
         </div>
       </footer>
+
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showScrollTop ? 1 : 0 }}
+        onClick={scrollToTop}
+        className="fixed bottom-8 right-8 p-3 rounded-full bg-[#00ff00] text-black shadow-lg shadow-[#00ff00]/20 hover:bg-[#00ff00]/80 transition-all duration-300 hover:scale-110 z-[9999]"
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.5 }}
+      >
+        <ArrowUp className="w-6 h-6" />
+      </motion.button>
     </>
   );
 }
