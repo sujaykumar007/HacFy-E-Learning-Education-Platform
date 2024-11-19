@@ -84,11 +84,23 @@ export default function internship() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Home</a>
-              <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Programs</a>
-              <a href="#" className="hover:text-[#00ff00]/80 transition-colors">About</a>
-              <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Contact</a>
-              <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all">
+              <a href="#" className="hover:text-[#00ff00]/80 transition-colors relative group">
+                Home
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#" className="hover:text-[#00ff00]/80 transition-colors relative group">
+                Programs
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#" className="hover:text-[#00ff00]/80 transition-colors relative group">
+                About
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href="#" className="hover:text-[#00ff00]/80 transition-colors relative group">
+                Contact
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20">
                 Apply Now
               </button>
             </nav>
@@ -108,11 +120,23 @@ export default function internship() {
           {isMenuOpen && (
             <div className="md:hidden border-t border-[#00ff00]/20 py-4">
               <nav className="flex flex-col space-y-4">
-                <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Home</a>
-                <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Programs</a>
-                <a href="#" className="hover:text-[#00ff00]/80 transition-colors">About</a>
-                <a href="#" className="hover:text-[#00ff00]/80 transition-colors">Contact</a>
-                <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all w-full">
+                <a href="#" className="hover:text-[#00ff00]/80 transition-all duration-300 hover:pl-2 relative group">
+                  Home
+                  <span className="absolute left-0 w-0.5 h-0 bg-[#00ff00] transition-all duration-300 group-hover:h-full"></span>
+                </a>
+                <a href="#" className="hover:text-[#00ff00]/80 transition-all duration-300 hover:pl-2 relative group">
+                  Programs
+                  <span className="absolute left-0 w-0.5 h-0 bg-[#00ff00] transition-all duration-300 group-hover:h-full"></span>
+                </a>
+                <a href="#" className="hover:text-[#00ff00]/80 transition-all duration-300 hover:pl-2 relative group">
+                  About
+                  <span className="absolute left-0 w-0.5 h-0 bg-[#00ff00] transition-all duration-300 group-hover:h-full"></span>
+                </a>
+                <a href="#" className="hover:text-[#00ff00]/80 transition-all duration-300 hover:pl-2 relative group">
+                  Contact
+                  <span className="absolute left-0 w-0.5 h-0 bg-[#00ff00] transition-all duration-300 group-hover:h-full"></span>
+                </a>
+                <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20 w-full">
                   Apply Now
                 </button>
               </nav>
@@ -301,6 +325,23 @@ and equip yourself with the skills that will make you a cybersecurity expert!
               &#62; Ready to start your cybersecurity journey? This comprehensive program will give you
               the foundation you need to excel in the field_
             </p>
+          </div>
+
+          {/* New Animated Apply Button */}
+          <div className="flex justify-center items-center py-20">
+            <motion.div
+              className="relative group"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00ff00] to-[#00ff00]/50 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+              <button className="relative px-12 py-4 bg-[#03060F] rounded-lg leading-none flex items-center divide-x divide-gray-600">
+                <span className="text-[#00ff00] text-lg font-semibold pr-6">Apply Now</span>
+                <span className="text-[#00ff00]/60 pl-6 group-hover:text-[#00ff00] transition duration-200">
+                  Start Your Journey &rarr;
+                </span>
+              </button>
+            </motion.div>
           </div>
         </div>
       </div>
