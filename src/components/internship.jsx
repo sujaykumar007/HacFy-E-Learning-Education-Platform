@@ -12,7 +12,9 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Mail
+  Mail,
+  Instagram,
+  Youtube
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -419,7 +421,7 @@ and equip yourself with the skills that will make you a cybersecurity expert!
                 </motion.a>
                 
                 <motion.a 
-                  href="#" 
+                  href="https://www.linkedin.com/company/hacfy" 
                   className="hover:text-[#00ff00] transition-colors relative group"
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
@@ -434,7 +436,7 @@ and equip yourself with the skills that will make you a cybersecurity expert!
                 </motion.a>
                 
                 <motion.a 
-                  href="#" 
+                  href="https://www.instagram.com/hacfy.co/" 
                   className="hover:text-[#00ff00] transition-colors relative group"
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
@@ -445,11 +447,11 @@ and equip yourself with the skills that will make you a cybersecurity expert!
                     whileHover={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   />
-                  <Twitter className="h-6 w-6 relative z-10" />
+                  <Instagram className="h-6 w-6 relative z-10" />
                 </motion.a>
                 
                 <motion.a 
-                  href="#" 
+                  href="mailto:info@hacfy.com" 
                   className="hover:text-[#00ff00] transition-colors relative group"
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.95 }}
@@ -462,6 +464,23 @@ and equip yourself with the skills that will make you a cybersecurity expert!
                   />
                   <Mail className="h-6 w-6 relative z-10" />
                 </motion.a>
+
+
+                <motion.a 
+                  href="https://www.youtube.com/@HacFy" 
+                  className="hover:text-[#00ff00] transition-colors relative group"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.span
+                    className="absolute -inset-2 bg-[#00ff00]/10 rounded-full opacity-0 group-hover:opacity-100"
+                    initial={{ scale: 0 }}
+                    whileHover={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  <Youtube className="h-6 w-6 relative z-10" />
+                </motion.a>
+                
               </div>
             </div>
           </div>
