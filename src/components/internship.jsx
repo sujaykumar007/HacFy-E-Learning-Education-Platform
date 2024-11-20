@@ -102,7 +102,10 @@ export default function internship() {
                 Contact
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20">
+              <button 
+                onClick={() => window.location.href='https://forms.gle/YJsgVh6FnZYvepqz9'}
+                className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20"
+              >
                 Apply Now
               </button>
             </nav>
@@ -138,7 +141,10 @@ export default function internship() {
                   Contact
                   <span className="absolute left-0 w-0.5 h-0 bg-[#00ff00] transition-all duration-300 group-hover:h-full"></span>
                 </a>
-                <button className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20 w-full">
+                <button 
+                  onClick={() => window.location.href='https://forms.gle/YJsgVh6FnZYvepqz9'}
+                  className="bg-[#00ff00] text-black px-4 py-2 rounded-md hover:bg-[#00ff00]/80 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-[#00ff00]/20 w-full"
+                >
                   Apply Now
                 </button>
               </nav>
@@ -184,7 +190,7 @@ export default function internship() {
               className="bg-[#03060F] p-4 rounded-lg inline-block mb-12"
             >
               <p className="text-xl text-white/80 font-mono">
-                <span className="text-[#00ff00]">&gt;</span> Launch your career in cybersecurity with hands-on experience_
+                <span className="text-[#00ff00]">&gt;</span> Launch your career in cybersecurity with hands-on experience
               </p>
             </motion.div>
           </motion.div>
@@ -349,7 +355,10 @@ and equip yourself with the skills that will make you a cybersecurity expert!
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00ff00] to-[#00ff00]/50 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-              <button className="relative px-12 py-4 bg-[#03060F] rounded-lg leading-none flex items-center divide-x divide-gray-600">
+              <button 
+                onClick={() => window.location.href='https://forms.gle/YJsgVh6FnZYvepqz9'}
+                className="relative px-12 py-4 bg-[#03060F] rounded-lg leading-none flex items-center divide-x divide-gray-600"
+              >
                 <span className="text-[#00ff00] text-lg font-semibold pr-6">Apply Now</span>
                 <span className="text-[#00ff00]/60 pl-6 group-hover:text-[#00ff00] transition duration-200">
                   Start Your Journey &rarr;
