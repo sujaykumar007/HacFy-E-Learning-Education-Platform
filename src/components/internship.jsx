@@ -84,7 +84,7 @@ export default function internship() {
             {/* Logo */}
             <div className="flex items-center">
               <img
-                src="/public/hacfy1.png"
+                src="/hacfy1.png"
                 alt="HacFy Logo"
                 className="h-8 w-8 mr-2"
               />
