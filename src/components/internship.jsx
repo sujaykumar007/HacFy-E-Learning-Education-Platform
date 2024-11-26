@@ -95,28 +95,28 @@ export default function internship() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <a
-                href="#"
+                href="/"
                 className="hover:text-[#00ff00]/80 transition-colors relative group"
               >
                 Home
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
-                href="#"
+                href="/services"
                 className="hover:text-[#00ff00]/80 transition-colors relative group"
               >
                 Programs
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
-                href="#"
+                href="/about"
                 className="hover:text-[#00ff00]/80 transition-colors relative group"
               >
                 About
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00ff00] transition-all duration-300 group-hover:w-full"></span>
               </a>
               <a
-                href="#"
+                href="/contact"
                 className="hover:text-[#00ff00]/80 transition-colors relative group"
               >
                 Contact
@@ -436,11 +436,12 @@ export default function internship() {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="flex items-center">
-                <img
-                  src="./src/assets/hacfy1.png"
-                  alt="HacFy Logo"
-                  className="h-8 w-8 mr-2"
-                />
+              <img
+                src="/hacfy1.png"
+                alt="HacFy Logo"
+                className="h-8 w-8 mr-2"
+              />
+
                 <span className="font-bold text-xl">HacFy</span>
               </div>
               <p className="text-white/80">
@@ -455,7 +456,7 @@ export default function internship() {
               <ul className="space-y-2 text-white/80">
                 <li>
                   <a
-                    href="#"
+                    href="/services"
                     className="hover:text-[#00ff00] transition-colors"
                   >
                     Programs
@@ -463,28 +464,28 @@ export default function internship() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/contact"
                     className="hover:text-[#00ff00] transition-colors"
                   >
-                    Certifications
+                    Contact
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/about"
                     className="hover:text-[#00ff00] transition-colors"
                   >
-                    Resources
+                    About
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="#"
                     className="hover:text-[#00ff00] transition-colors"
                   >
                     Blog
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
 
