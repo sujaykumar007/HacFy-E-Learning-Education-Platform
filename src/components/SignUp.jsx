@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', { email, password });
+      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signup', { email, password });
       setMessage(response.data.message);
+      console.log(response.status)
+      if(response.status == 201 ){
+        console.log("success")
+        navigate('/',{});
+      }
     } catch (error) {
       setMessage('Error: Unable to register');
     }

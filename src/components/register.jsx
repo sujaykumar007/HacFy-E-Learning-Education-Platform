@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { arrow } from "../assets";
 
+
 const RegistrationPage = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -43,6 +47,10 @@ const RegistrationPage = () => {
         password: "",
         termsAndConditions: false,
       });
+
+      if(response.status ===  201) {
+        navigate("/login")
+      }
     } catch (error) {
       // Show error message from backend or a generic error
       setMessage(

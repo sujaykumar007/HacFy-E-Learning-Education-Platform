@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios'; // Import axios
 import { arrow } from '../assets';
 
 const LoginPage = () => {
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,12 +23,13 @@ const LoginPage = () => {
       const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
       const { token } = response.data;
 
-      // Save the token in local storage
-      localStorage.setItem('token', token);
 
-      // Redirect user or perform other actions as needed
-      console.log('Login successful');
-      //navigation should be added here
+      if(response.status == 200) {
+        // Save the token in local storage
+        localStorage.setItem('token', token);
+        navigate('/');
+      }
+
     } catch (error) {
       // Handle error (e.g., wrong credentials)
       setError('Invalid email or password');
