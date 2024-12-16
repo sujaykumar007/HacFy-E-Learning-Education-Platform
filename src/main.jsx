@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -12,20 +12,21 @@ import {
   FAQs,
   Footer,
   Number,
-  Team,
+  // Team,
   Project,
-  Wedo,
+  // Wedo,
   Services,
   ClientSlider,
-  Path,
+  // Path,
   LoginPage,
   RegistrationPage,
   PageNotFound,
   ResetPassword,
   ContactMe,
   Internship,
-  Blog
+
 } from "./components";
+
 
 const router = createBrowserRouter([
   {
@@ -81,14 +82,7 @@ const router = createBrowserRouter([
     path: "/internships",
     element: <Internship />
   },
-  {
-    path: "/blog",
-    element:<Blog/>
-  }
 ]);
-
-
-
 
 
 
