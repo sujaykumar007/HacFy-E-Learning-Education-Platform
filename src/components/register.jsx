@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { arrow } from "../assets";
 
-
 const RegistrationPage = () => {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -14,6 +12,7 @@ const RegistrationPage = () => {
     email: "",
     phone: "",
     password: "",
+    confirmPassword: "",
     termsAndConditions: false,
   });
   const [message, setMessage] = useState("");
@@ -29,11 +28,17 @@ const RegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate confirm password
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Passwords do not match. Please try again.");
+      return;
+    }
+
     try {
       // Make POST request to backend
       const response = await axios.post(
-        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
-        formData,
+        "http://localhost:9000/api/auth/register",
+        formData
       );
 
       // Handle successful registration
@@ -45,18 +50,19 @@ const RegistrationPage = () => {
         email: "",
         phone: "",
         password: "",
+        confirmPassword: "",
         termsAndConditions: false,
       });
 
-      if(response.status ===  201) {
-        navigate("/login")
+      if (response.status === 201) {
+        navigate("/login");
       }
     } catch (error) {
       // Show error message from backend or a generic error
       setMessage(
         error.response
           ? error.response.data.message
-          : "Registration failed. Please try again.",
+          : "Registration failed. Please try again."
       );
     }
   };
@@ -132,6 +138,18 @@ const RegistrationPage = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Password"
+                className="appearance-none rounded-sm w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"
+              />
+            </div>
+            <div>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                placeholder="Confirm Password"
                 className="appearance-none rounded-sm w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900"
               />
             </div>

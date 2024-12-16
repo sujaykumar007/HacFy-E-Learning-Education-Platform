@@ -20,13 +20,14 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       console.log(email,password);
-      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
-      const { token } = response.data;
-
-
+      const response = await axios.post('http://localhost:9000/api/auth/signin', { email, password });
+      const { login,foundName,foundEmail} = response.data;
+      
       if(response.status == 200) {
         // Save the token in local storage
-        localStorage.setItem('token', token);
+        localStorage.setItem('login', login);
+        localStorage.setItem('name', foundName);
+        localStorage.setItem('email', foundEmail);
         navigate('/');
       }
 
