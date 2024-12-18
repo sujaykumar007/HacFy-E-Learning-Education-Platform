@@ -192,3 +192,14 @@ html, body {
 .logos-slide:hover {
   animation-play-state: paused;
 }
+
+ /* Hero page vedio controllers */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}

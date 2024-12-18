@@ -1,8 +1,8 @@
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { textVariant } from "@/utils/motion";
 import { styles } from "@/style"; // Ensure this is correctly imported
 import { Link } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
 import videoSrc from "@/assets/video.mp4"; // Replace with your actual video path
 
 // MAIN HERO PAGE
@@ -60,8 +60,10 @@ const Hero = () => {
         autoPlay
         loop
         muted
-        preload="none" // Only load the video when it is about to be played
+        preload="true" // Only load the video when it is about to be played
         playsInline
+        controls={false} // Remove controls from the video
+        style={{ pointerEvents: 'none' }} // Disable all mouse activities on the video
       />
 
       <div className="md:w-3/4 lg:w-1/2 h-full text-white px-6 md:px-20 lg:px-40 flex items-center z-10">
@@ -72,9 +74,7 @@ const Hero = () => {
             </h3>
             <p className={`${styles.heroSubText}`}>
               Empowering Your Digital Defense with Comprehensive Cybersecurity
-              Education. Our Courses cover everything from the basics to
-              advanced strategies, ensuring you're well-equipped to protect the
-              digital world.
+              Education. Our Courses cover everything from the basics to advanced strategies, ensuring you're well-equipped to protect the digital world.
             </p>
           </motion.div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 pt-4 pb-5 md:pt-5">
@@ -103,10 +103,11 @@ const Hero = () => {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/6RDz_bV2yXs?si=WdftR-KjFaPiMFFM"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    src="https://www.youtube.com/embed/6RDz_bV2yXs?controls=0&autohide=1&showinfo=0&modestbranding=1&rel=0&autoplay=1&fs=0&disablekb=1&cc_load_policy=0&iv_load_policy=3"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
                     allowFullScreen
                     title="Demo Video"
+                    style={{ pointerEvents: 'none' }} // Disable all mouse activities on the iframe
                   ></iframe>
                 </div>
               </div>
@@ -119,4 +120,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
