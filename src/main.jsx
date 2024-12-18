@@ -24,7 +24,8 @@ import {
   ResetPassword,
   ContactMe,
   Internship,
-
+  Blog,
+  OurClient
 } from "./components";
 
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
         <About />
         <Project />
         <Services />
-
+        {/* <OurClients /> */}
         <FAQs />
         <Number />
         <ClientSlider />
