@@ -12,12 +12,9 @@ import {
   FAQs,
   Footer,
   Number,
-  // Team,
   Project,
-  // Wedo,
   Services,
   ClientSlider,
-  // Path,
   LoginPage,
   RegistrationPage,
   PageNotFound,
@@ -25,7 +22,8 @@ import {
   ContactMe,
   Internship,
   Blog,
-  OurClient
+  OurClients,
+  IndustriesWeServe
 } from "./components";
 
 
@@ -38,6 +36,7 @@ const router = createBrowserRouter([
         <Hero />
         <About />
         <Project />
+        <IndustriesWeServe />
         <Services />
         {/* <OurClients /> */}
         <FAQs />
