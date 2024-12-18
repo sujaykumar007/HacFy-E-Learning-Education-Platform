@@ -1,5 +1,6 @@
 import { navLinks } from "../constants";
 import { logo, name, close, menu } from "@/assets";
+import { UserIcon } from '@heroicons/react/solid';
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -8,12 +9,35 @@ import { motion, AnimatePresence } from "framer-motion";
 const Nav = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuVariants = {
     hidden: { opacity: 0, x: "-100%" },
     visible: { opacity: 1, x: "0%" },
   };
+
+  const login = localStorage.getItem("login");
+  const userEmail = localStorage.getItem("email") || "user@example.com";
+  const userName = localStorage.getItem("name") || "John Doe";
+
+  const handleLogout = () => {
+    localStorage.clear(); // Clear all user-related data from local storage
+    window.location.href="/"; // Reload the page to reflect the logout state
+  };
+
+  const Dropdown = () => (
+    <div className="absolute right-0 mt-5 w-60 bg-white border rounded shadow-lg z-10 max-h-48 overflow-hidden">
+      <div className="px-3 py-2 text-gray-700 font-medium text-ellipsis overflow-hidden">{userName}</div>
+      <div className="px-3 py-2 text-gray-500 text-sm text-ellipsis overflow-hidden">{userEmail}</div>
+      <button
+        onClick={handleLogout}
+        className="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+      >
+        Logout
+      </button>
+    </div>
+
+  );
 
   return (
     <nav className="w-full flex items-center py-2 fixed top-0 bg-transparent bg-white border-black bg-pattern z-20 px-4 md:px-8">
@@ -48,18 +72,26 @@ const Nav = () => {
                 setActive(link.title);
               }}
             >
-              <NavLink to={`/${link.id}`}>
-                {link.title}
-              </NavLink>
+              <NavLink to={`/${link.id}`}>{link.title}</NavLink>
             </li>
           ))}
 
-          <li>
-            <Link to="/login">
-              <button className="px-3 py-2 text-sm sm:text-base md:text-lg lg:text-base xl:text-base font-medium sm:font-semibold md:font-semibold lg:font-bold border border-transparent bg-red-600 hover:bg-red-700 text-white rounded-md">
-                Login
-              </button>
-            </Link>
+          <li className="relative">
+            {login ? (
+              <div
+                className="cursor-pointer"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <UserIcon className="w-8 h-8 text-gray-600" /> {/* Human icon instead of image */}
+                {isDropdownOpen && <Dropdown />}
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="px-3 py-2 text-sm sm:text-base md:text-lg lg:text-base xl:text-base font-medium sm:font-semibold md:font-semibold lg:font-bold border border-transparent bg-red-600 hover:bg-red-700 text-white rounded-md">
+                  Login
+                </button>
+              </Link>
+            )}
           </li>
         </ul>
 
@@ -89,15 +121,11 @@ const Nav = () => {
                         : "text-blue-950"
                         } font-medium text-base`}
                       onClick={() => {
-
                         setActive(link.title);
                         setToggle(!toggle);
-
                       }}
                     >
-                      <NavLink to={`${link.id}`}>
-                        {link.title}
-                      </NavLink>
+                      <NavLink to={`${link.id}`}>{link.title}</NavLink>
                     </li>
                   ))}
                 </ul>

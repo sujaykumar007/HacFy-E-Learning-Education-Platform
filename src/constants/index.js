@@ -71,10 +71,6 @@ export const navLinks = [
         title: "Internships"
     },
     {
-        id: "blog",
-        title: "Blog",
-    },
-    {
         id: 'contact',
         title: "Contact"
     },
