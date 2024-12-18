@@ -26,7 +26,6 @@ import {
   Internship,
   Blog,
   OurClients
-
 } from "./components";
 
 const router = createBrowserRouter([
