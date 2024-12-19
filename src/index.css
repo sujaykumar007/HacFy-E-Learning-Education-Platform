@@ -16,6 +16,9 @@ body,
 html {
   padding: 0;
   margin: 0;
+  background-color: #02050A;
+  min-height: 100vh;
+  width: 100%;
 }
 
 @layer base {
@@ -148,15 +151,6 @@ html {
 
 /* src/App.css or any global stylesheet */
 
-.cursor-trail-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none; /* Make sure the canvas doesn't interfere with clicks */
-  z-index: 9999; /* Ensure it's on top */
-}
 
 html, body {
   margin: 0;
@@ -170,6 +164,9 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow-y: auto;
+  background-color: #02050A;
+  min-height: 100vh;
+  width: 100%;
 }
 
 @keyframes scroll {
@@ -203,4 +200,10 @@ video::-webkit-media-controls-overlay-play-button {
 }
 video::-webkit-media-controls-start-playback-button {
   display: none !important;
+}
+
+.internship-page {
+  background-color: #02050A;
+  min-height: 100vh;
+  width: 100%;
 }
