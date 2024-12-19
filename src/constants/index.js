@@ -21,6 +21,22 @@ import {
 export const clients = [
     {
         id: 1,
+        url: "https://media.licdn.com/dms/image/v2/D4E03AQFl2rIFrL1prA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718750105384?e=2147483647&v=beta&t=rj2OY7AsVTAGSyZV6NP64j415-W7xzyutXWqMEOTbJo",
+        alt: "Image 1",
+        name: "Niels Hoekman",
+        work: "CloudSecurity Expert",
+        testimonial: "They offer top-notch penetration testing and VAPT services, ensuring your organization's security vulnerabilities are identified and mitigated with precision and expertise. Highly professional and reliable"
+    },
+    {
+        id: 2,
+        url: "https://media.licdn.com/dms/image/v2/C4E03AQETEL6H9DBJQw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517695713916?e=2147483647&v=beta&t=9-tGrSxhCUuU6jHDNBdGaid48lWXA6qwltQo-Gk_bm8",
+        alt: "Image 1",
+        name: "Vasu M Deshpande ",
+        work: "Chief Executive Officer",
+        testimonial: "They offer top-notch penetration testing and VAPT services, ensuring your organization's security vulnerabilities are identified and mitigated with precision and expertise. Highly professional and reliable"
+    },
+    {
+        id: 3,
         url: "https://i.pinimg.com/236x/81/f3/51/81f351cfa59a183a781672a6eaa08f82.jpg",
         alt: "Image 1",
         name: "Abhishek RG",
@@ -28,7 +44,7 @@ export const clients = [
         testimonial: "The training provided was top-notch and helped me gain essential skills in cybersecurity. Highly recommend!"
     },
     {
-        id: 2,
+        id: 4,
         url: "https://randomuser.me/api/portraits/men/5.jpg",
         alt: "Image 2",
         name: "Ganesh HY",
@@ -36,7 +52,7 @@ export const clients = [
         testimonial: "An excellent program that covered all the key areas of cybersecurity. The practical exercises were very useful."
     },
     {
-        id: 3,
+        id: 5,
         url: "https://randomuser.me/api/portraits/women/9.jpg",
         alt: "Image 3",
         name: "Jane Smith",
