@@ -76,9 +76,9 @@ export default function internship() {
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-[#02050A]">
       {/* Header */}
-      <header className="bg-[#03060F] text-[#00ff00] border-b border-[#00ff00]/20 sticky top-0 z-50 w-full">
+      <header className="bg-[#02050A] text-[#00ff00] border-b border-[#00ff00]/20 sticky top-0 z-50 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -195,7 +195,7 @@ export default function internship() {
       </header>
 
       {/* Back Button */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#02050A]">
         <motion.button
           onClick={() => window.history.back()}
           className="mt-4 w-10 h-10 rounded-full bg-[#03060F] border-2 border-[#00ff00] flex items-center justify-center hover:bg-[#00ff00]/10 transition-colors group"
@@ -207,7 +207,7 @@ export default function internship() {
       </div>
 
       {/* Hero Section */}
-      <div className="bg-[#03060F] py-20 border-b border-[#00ff00]/20 w-full">
+      <div className="bg-[#02050A] py-20 border-b border-[#00ff00]/20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -294,10 +294,10 @@ export default function internship() {
       </div>
 
       {/* Main Content */}
-      <div className="bg-[#03060F] text-[#00ff00] p-8 font-mono w-full">
+      <div className="bg-[#02050A] text-[#00ff00] p-8 font-mono w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">
                 Hands-on Experience
               </h3>
@@ -311,7 +311,7 @@ export default function internship() {
               </button>
             </div>
 
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">
                 Industry Certification
               </h3>
@@ -325,7 +325,7 @@ export default function internship() {
               </button>
             </div>
 
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">Career Growth</h3>
               <p className="text-white/80 mb-4">
                 Launch your cybersecurity career with mentorship, networking
@@ -370,9 +370,9 @@ export default function internship() {
 
                   <div className="ml-6 flex-1">
                     <div
-                      className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20
+                      className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20
                       transform transition-all duration-300 ease-in-out
-                      hover:bg-[#03060F] hover:translate-x-2 hover:border-[#00ff00]/60
+                      hover:bg-[#02050A] hover:translate-x-2 hover:border-[#00ff00]/60
                       hover:shadow-lg hover:shadow-[#00ff00]/10
                       hover:scale-[1.02]"
                     >
@@ -415,7 +415,7 @@ export default function internship() {
                 onClick={() =>
                   (window.location.href = "https://forms.gle/YJsgVh6FnZYvepqz9")
                 }
-                className="relative px-12 py-4 bg-[#03060F] rounded-lg leading-none flex items-center divide-x divide-gray-600"
+                className="relative px-12 py-4 bg-[#02050A] rounded-lg leading-none flex items-center divide-x divide-gray-600"
               >
                 <span className="text-[#00ff00] text-lg font-semibold pr-6">
                   Apply Now
@@ -430,7 +430,7 @@ export default function internship() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#03060F] text-[#00ff00] border-t border-[#00ff00]/20 w-full">
+      <footer className="bg-[#02050A] text-[#00ff00] border-t border-[#00ff00]/20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
@@ -587,6 +587,6 @@ export default function internship() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
