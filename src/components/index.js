@@ -17,9 +17,8 @@ import ResetPassword from './resetpassword'
 import ContactMe from './contact'
 import Internship from './internship'
 import Blog from './blog'
-import OurClients from './OurClients'
 import IndustriesWeServe from './IndustriesWeServe'
     
 //MAIN INDEX TO IMPORT RECENTLY CREATED COMPONENTS OR NEW ADDED WEB PAGES
 
-export { About, Hero, Nav, OurClients, IndustriesWeServe,FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, ContactMe, Internship, Blog } 
+export { About, Hero, Nav, IndustriesWeServe,FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, ContactMe, Internship, Blog } 

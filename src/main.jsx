@@ -22,7 +22,6 @@ import {
   ContactMe,
   Internship,
   Blog,
-  OurClients,
   IndustriesWeServe
 } from "./components";
 
@@ -38,7 +37,6 @@ const router = createBrowserRouter([
         <Project />
         <IndustriesWeServe />
         <Services />
-        {/* <OurClients /> */}
         <FAQs />
         <Number />
         <ClientSlider />
