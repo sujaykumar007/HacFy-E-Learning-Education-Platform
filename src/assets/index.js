@@ -18,6 +18,9 @@ import linkdin from './linkedin.svg'
 import sev1 from './sev1.png'
 import sev2 from './sev2.png'
 import sev3 from './sev3.png'
+import sev4 from './sev4.png'
+import sev5 from './sev5.png'
+import sev6 from './sev6.png'
 
 import tick from './tick.svg'
 
@@ -27,6 +30,6 @@ import arrow from './arrow.svg'
 
 
 export  {logo,phone,play,roundarrow,profile,Youtube,facebook,github,image
-    ,insta,linkdin,search,sev1,sev2,sev3,tick,Stare,name,close,menu,message,arrow
+    ,insta,linkdin,search,sev1,sev2,sev3,sev4,sev5,sev6,tick,Stare,name,close,menu,message,arrow
 }
 

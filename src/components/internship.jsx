@@ -15,8 +15,16 @@ import {
   Mail,
   Instagram,
   Youtube,
+  Cloud,
+  FileCheck,
+  Bug,
+  Search,
+  AlertTriangle,
+  MonitorCheck
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { textVariant } from "../utils/motion";
+import { useNavigate } from "react-router-dom";
 
 // First, add this CSS at the top of your file or in your styles
 const marqueeStyles = {
@@ -26,7 +34,21 @@ const marqueeStyles = {
   },
 };
 
-export default function internship() {
+const projectCards = [
+  {
+    name: "Cybersecurity and Ethical Hacking",
+    main_img: "/path/to/image1.jpg",
+    description: "Learn the fundamentals of cybersecurity and ethical hacking..."
+  },
+  {
+    name: "Incident Response and Management",
+    main_img: "/path/to/image2.jpg",
+    description: "Skills to detect, analyze, and respond to cybersecurity incidents..."
+  },
+];
+
+export default function Internship() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const roadmapData = [
@@ -76,9 +98,9 @@ export default function internship() {
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-[#02050A]">
       {/* Header */}
-      <header className="bg-[#03060F] text-[#00ff00] border-b border-[#00ff00]/20 sticky top-0 z-50 w-full">
+      <header className="bg-[#02050A] text-[#00ff00] border-b border-[#00ff00]/20 sticky top-0 z-50 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -195,7 +217,7 @@ export default function internship() {
       </header>
 
       {/* Back Button */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#02050A]">
         <motion.button
           onClick={() => window.history.back()}
           className="mt-4 w-10 h-10 rounded-full bg-[#03060F] border-2 border-[#00ff00] flex items-center justify-center hover:bg-[#00ff00]/10 transition-colors group"
@@ -207,7 +229,7 @@ export default function internship() {
       </div>
 
       {/* Hero Section */}
-      <div className="bg-[#03060F] py-20 border-b border-[#00ff00]/20 w-full">
+      <div className="bg-[#02050A] py-20 border-b border-[#00ff00]/20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -293,11 +315,56 @@ export default function internship() {
         </div>
       </div>
 
+      {/* Projects Section */}
+      <div className="bg-[#02050A] py-16 w-full">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div variants={textVariant()} initial="hidden" animate="show">
+            <h2 className="text-4xl font-bold text-[#00ff00] text-center mb-4">
+              Internships we provide
+            </h2>
+            <p className="text-white/80 text-center mb-12">
+              Empowering professionals worldwide to achieve their cybersecurity career aspirations
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Bug, title: "WAM VAPT", delay: 0.1 },
+              { icon: Search, title: "Bug Hunting", delay: 0.2 },
+              { icon: Cloud, title: "Cloud Security", delay: 0.3 },
+              { icon: Shield, title: "Cyber Crime Investigation", delay: 0.4 },
+              { icon: Network, title: "Network Security", delay: 0.5 },
+              { icon: AlertTriangle, title: "Threat Analysis", delay: 0.6 },
+              { icon: MonitorCheck, title: "Security Operations Center", delay: 0.7 },
+              { icon: FileCheck, title: "Governance Risk & Compliance", delay: 0.8 },
+            ].map((domain, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: domain.delay }}
+                className="bg-[#02050A] p-6 rounded-lg border border-[#00ff00]/20 hover:border-[#00ff00]/60 
+                           group transition-all duration-300 flex flex-col items-center"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  className="w-16 h-16 bg-[#00ff00]/10 rounded-full flex items-center justify-center mb-4"
+                >
+                  <domain.icon className="w-8 h-8 text-[#00ff00] group-hover:text-[#00ff00]" />
+                </motion.div>
+                <h3 className="text-[#00ff00] text-lg font-semibold text-center">{domain.title}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Main Content */}
-      <div className="bg-[#03060F] text-[#00ff00] p-8 font-mono w-full">
+      <div className="bg-[#02050A] text-[#00ff00] p-8 font-mono w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">
                 Hands-on Experience
               </h3>
@@ -311,7 +378,7 @@ export default function internship() {
               </button>
             </div>
 
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">
                 Industry Certification
               </h3>
@@ -325,7 +392,7 @@ export default function internship() {
               </button>
             </div>
 
-            <div className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
+            <div className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20 hover:border-[#00ff00]/60 transition-all duration-300">
               <h3 className="text-xl font-semibold mb-4">Career Growth</h3>
               <p className="text-white/80 mb-4">
                 Launch your cybersecurity career with mentorship, networking
@@ -370,9 +437,9 @@ export default function internship() {
 
                   <div className="ml-6 flex-1">
                     <div
-                      className="bg-[#03060F] rounded-lg p-6 border-2 border-[#00ff00]/20
+                      className="bg-[#02050A] rounded-lg p-6 border-2 border-[#00ff00]/20
                       transform transition-all duration-300 ease-in-out
-                      hover:bg-[#03060F] hover:translate-x-2 hover:border-[#00ff00]/60
+                      hover:bg-[#02050A] hover:translate-x-2 hover:border-[#00ff00]/60
                       hover:shadow-lg hover:shadow-[#00ff00]/10
                       hover:scale-[1.02]"
                     >
@@ -415,7 +482,7 @@ export default function internship() {
                 onClick={() =>
                   (window.location.href = "https://forms.gle/YJsgVh6FnZYvepqz9")
                 }
-                className="relative px-12 py-4 bg-[#03060F] rounded-lg leading-none flex items-center divide-x divide-gray-600"
+                className="relative px-12 py-4 bg-[#02050A] rounded-lg leading-none flex items-center divide-x divide-gray-600"
               >
                 <span className="text-[#00ff00] text-lg font-semibold pr-6">
                   Apply Now
@@ -430,7 +497,7 @@ export default function internship() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#03060F] text-[#00ff00] border-t border-[#00ff00]/20 w-full">
+      <footer className="bg-[#02050A] text-[#00ff00] border-t border-[#00ff00]/20 w-full">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Info */}
@@ -587,6 +654,6 @@ export default function internship() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

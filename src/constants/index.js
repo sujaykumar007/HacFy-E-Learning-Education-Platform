@@ -9,7 +9,10 @@ import {
     Youtube,
     search,
     sev2,
-    sev3
+    sev3,
+    sev4,
+    sev5,
+    sev6
 } from "@/assets"
 
 // FILE RELATED ALL TESTIMONIAL , SERVICES, FAQ ETC TEXT IS HERE 
@@ -18,14 +21,30 @@ import {
 export const clients = [
     {
         id: 1,
-        url: "https://th.bing.com/th/id/OIP.dn-sSm17qGgT7C0yfebJNgHaHa?w=163&h=180&c=7&r=0&o=5&pid=1.7",
+        url: "https://media.licdn.com/dms/image/v2/D4E03AQFl2rIFrL1prA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1718750105384?e=2147483647&v=beta&t=rj2OY7AsVTAGSyZV6NP64j415-W7xzyutXWqMEOTbJo",
+        alt: "Image 1",
+        name: "Niels Hoekman",
+        work: "CloudSecurity Expert",
+        testimonial: "They offer top-notch penetration testing and VAPT services, ensuring your organization's security vulnerabilities are identified and mitigated with precision and expertise. Highly professional and reliable"
+    },
+    {
+        id: 2,
+        url: "https://media.licdn.com/dms/image/v2/C4E03AQETEL6H9DBJQw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517695713916?e=2147483647&v=beta&t=9-tGrSxhCUuU6jHDNBdGaid48lWXA6qwltQo-Gk_bm8",
+        alt: "Image 1",
+        name: "Vasu M Deshpande ",
+        work: "Chief Executive Officer",
+        testimonial: "They offer top-notch penetration testing and VAPT services, ensuring your organization's security vulnerabilities are identified and mitigated with precision and expertise. Highly professional and reliable"
+    },
+    {
+        id: 3,
+        url: "https://i.pinimg.com/236x/81/f3/51/81f351cfa59a183a781672a6eaa08f82.jpg",
         alt: "Image 1",
         name: "Abhishek RG",
         work: "Software Engineer",
         testimonial: "The training provided was top-notch and helped me gain essential skills in cybersecurity. Highly recommend!"
     },
     {
-        id: 2,
+        id: 4,
         url: "https://randomuser.me/api/portraits/men/5.jpg",
         alt: "Image 2",
         name: "Ganesh HY",
@@ -33,7 +52,7 @@ export const clients = [
         testimonial: "An excellent program that covered all the key areas of cybersecurity. The practical exercises were very useful."
     },
     {
-        id: 3,
+        id: 5,
         url: "https://randomuser.me/api/portraits/women/9.jpg",
         alt: "Image 3",
         name: "Jane Smith",
@@ -135,15 +154,31 @@ export const Services_data = [
         description: "Learn the fundamentals of cybersecurity and ethical hacking, including how to identify vulnerabilities, secure systems, and conduct penetration tests. Gain hands-on experience with real-world tools and techniques to defend against cyber threats."
     },
     {
-        name: "Website Penetration Testing",
+        name: "Incident Response and Management",
         main_img: sev2,
-        description: "Dive into the process of website penetration testing, where you will assess web applications for security flaws. Learn how to identify, exploit, and report vulnerabilities in websites to help businesses enhance their web security."
+        description: "Skills to detect, analyze, and respond to cybersecurity incidents effectively."
     },
     {
-        name: "Mobile Application Penetration Testing",
+        name: "Cloud and IOT Security",
         main_img: sev3,
-        description: "Focus on securing mobile apps by learning how to conduct penetration testing on Android and iOS platforms. This internship will cover various attack vectors and methods to safeguard mobile applications against potential threats."
+        description: " Understanding cloud and IoT, protecting dataand defending against emerging threats."
     },
+    {
+        name: "Mobile and Network Forensics ",
+        main_img: sev4,
+        description: "Extracting data from devices and analyzingnetwork traffic for unauthorized activities."
+    },
+    {
+        name: "HacFy Awarness Sessions ",
+        main_img: sev5,
+        description: "Understanding and securing Internet of Things devices against emerging threats."
+    },
+    {
+        name: "Pentesting & Hacker’s Toolkit",
+        main_img: sev6,
+        description: "Finding and learning the vulnerabilities in the website."
+    },
+
 
 
 ]

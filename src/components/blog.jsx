@@ -34,7 +34,7 @@ export default function Blog() {
     <div className="blog-container terminal-theme">
       {/* Header with Search and Categories */}
       <header className="blog-header">
-        <h1><span className="terminal-prompt">></span> HacFy Blog</h1>
+        <h1><span className="terminal-prompt"></span> HacFy Blog</h1>
         <input
           type="search"
           placeholder="$ search articles..."
@@ -56,7 +56,7 @@ export default function Blog() {
 
       {/* Featured Post Section */}
       <section className="featured-post">
-        <h2><span className="terminal-prompt">></span> Featured Post</h2>
+        <h2><span className="terminal-prompt"></span> Featured Post</h2>
         {posts.filter(post => post.type === 'featured').map(post => (
           <div key={post.id} className="featured-post-card">
             <h3>{post.title}</h3>
@@ -79,7 +79,7 @@ export default function Blog() {
         {/* Educational Resources Section */}
         <section className="content-section">
           <div className="section-header">
-            <h2><span className="terminal-prompt">></span> Educational Resources</h2>
+            <h2><span className="terminal-prompt"></span> Educational Resources</h2>
             <p>Comprehensive learning materials to help you master development skills</p>
           </div>
           <div className="cards-grid">
@@ -126,7 +126,7 @@ export default function Blog() {
         {/* Industry News Section */}
         <section className="content-section">
           <div className="section-header">
-            <h2><span className="terminal-prompt">></span> Industry News & Updates</h2>
+            <h2><span className="terminal-prompt"></span> Industry News & Updates</h2>
             <p>Stay current with the latest developments in tech</p>
           </div>
           <div className="cards-grid">
@@ -173,7 +173,7 @@ export default function Blog() {
 
       {/* Call to Action Section */}
       <section className="cta-section">
-        <h2><span className="terminal-prompt">></span> Stay Updated!</h2>
+        <h2><span className="terminal-prompt"></span> Stay Updated!</h2>
         <p>Subscribe to our newsletter for the latest updates</p>
         <form className="subscribe-form">
           <input
