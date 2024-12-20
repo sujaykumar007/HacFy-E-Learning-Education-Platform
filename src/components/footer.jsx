@@ -2,11 +2,13 @@ import React from "react";
 import { phone, logo } from "../assets";
 import { footerQlink, Resources ,Contact_link} from "@/constants";
 import { styles } from "@/style";
+import { FaWhatsapp } from "react-icons/fa";
+
 const Footer = () => {
 
     // Footer Section 
   return (
-    <footer className="bg-gray-800 text-white px-6 pb-4 ">
+    <footer className="bg-gray-800 text-white px-6 pb-4 relative">
       <div className="container mx-auto w-full flex flex-wrap border-b-2  border-gray-500 pb-6 p-2 justify-between items-center">
         <div className="w-full md:w-1/3 mb-8 md:mb-0 flex items-center">
           <img
@@ -18,6 +20,15 @@ const Footer = () => {
             <h2 className="text-xl font-bold">Give Us A Call</h2>
             <p className="text-lg">+91 8660767853</p>
           </div>
+          <a
+            href="https://wa.me/918660767853"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 bg-green-500 hover:bg-green-600 px-4 py-3 rounded-full transition-all duration-300 hover:scale-110 flex items-center gap-2"
+          >
+            <FaWhatsapp size={20} className="text-white" />
+            <span className="text-white font-medium">Chat with us</span>
+          </a>
         </div>
         <div className="w-full lg:w-1/3  md:w-1/2 mb-8 md:mb-0">
           <h2 className="text-xl font-bold">Join Our Newsletter</h2>
