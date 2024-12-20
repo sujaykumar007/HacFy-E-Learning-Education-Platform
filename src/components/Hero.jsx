@@ -51,7 +51,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-wrap lg:h-screen">
+    <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-col lg:flex-wrap min-h-screen lg:h-screen">
       {/* Background Video (lazy load) */}
       <video
         ref={videoRef}
@@ -85,13 +85,13 @@ const Hero = () => {
         }}
       />
 
-      <div className="md:w-3/4 lg:w-1/2 h-full text-white px-6 md:px-20 lg:px-40 flex items-center z-[3]">
+      <div className="md:w-3/4 lg:w-1/2 text-white px-6 md:px-20 lg:px-40 flex items-center z-[3] mb-20 lg:mb-0">
         <div>
           <motion.div variants={textVariant()}>
-            <h3 className={`${styles.heroHeadText} mt-20 sm:m-auto`}>
-              Empowering Cybersecurity Education.
+            <h3 className={`${styles.heroHeadText} mt-32 sm:mt-40 md:mt-20`}>
+              A  Future Secured
             </h3>
-            <p className={`${styles.heroSubText}`}>
+            <p className={`${styles.heroSubText} pt-4 sm:pt-6 max-w-[90%] sm:max-w-full`}>
               Empowering Your Digital Defense with Comprehensive Cybersecurity
               Education. Our Courses cover everything from the basics to advanced strategies, ensuring you're well-equipped to protect the digital world.
             </p>
@@ -135,25 +135,23 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Clients Logo Slider - removed filters for original logo colors */}
-      <div className="absolute bottom-0 left-0 w-full pb-12 z-[3]">
+      {/* Clients Logo Slider - updated positioning and responsiveness */}
+      <div className="relative w-full pb-12 z-[3] mt-auto">
         <div className="container mx-auto px-4">
           <div className="logos-slider overflow-hidden relative">
             <div className="logos-slide flex animate-scroll">
-              {/* First set of logos */}
-              <img src="/client1.png" alt="Client 1" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client2.png" alt="Client 2" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              {/* <img src="/client3.png" alt="Client 3" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" /> */}
-              <img src="/client4.png" alt="Client 4" className="mx-12 h-14 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client5.png" alt="Client 5" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client6.png" alt="Client 6" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              {/* Duplicate set for continuous scroll */}
-              <img src="/client1.png" alt="Client 1" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client2.png" alt="Client 2" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              {/* <img src="/client3.png" alt="Client 3" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" /> */}
-              <img src="/client4.png" alt="Client 4" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client5.png" alt="Client 5" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
-              <img src="/client6.png" alt="Client 6" className="mx-12 h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              {/* First set of logos - updated sizes for better mobile display */}
+              <img src="/client1.png" alt="Client 1" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client2.png" alt="Client 2" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client4.png" alt="Client 4" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client5.png" alt="Client 5" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client6.png" alt="Client 6" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              {/* Duplicate set - updated sizes */}
+              <img src="/client1.png" alt="Client 1" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client2.png" alt="Client 2" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client4.png" alt="Client 4" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client5.png" alt="Client 5" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              <img src="/client6.png" alt="Client 6" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
         </div>
