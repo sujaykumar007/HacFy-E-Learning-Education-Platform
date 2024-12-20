@@ -22,7 +22,8 @@ import {
   ContactMe,
   Internship,
   Blog,
-  IndustriesWeServe
+  IndustriesWeServe,
+  Chatbot
 } from "./components";
 
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         <ClientSlider />
         <ContactMe />
         <Footer />
-
+        <Chatbot />
       </>
     ),
     errorElement: <PageNotFound />,

@@ -18,7 +18,8 @@ import ContactMe from './contact'
 import Internship from './internship'
 import Blog from './blog'
 import IndustriesWeServe from './IndustriesWeServe'
-    
+import Chatbot from './Chatbot'
+
 //MAIN INDEX TO IMPORT RECENTLY CREATED COMPONENTS OR NEW ADDED WEB PAGES
 
-export { About, Hero, Nav, IndustriesWeServe,FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, ContactMe, Internship, Blog } 
+export { About, Hero, Nav, Chatbot,IndustriesWeServe,FAQs, Footer, Number, Team, Project, Wedo, Services, ClientSlider, Path, LoginPage, RegistrationPage, PageNotFound, ResetPassword, ContactMe, Internship, Blog } 
