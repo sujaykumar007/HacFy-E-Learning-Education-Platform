@@ -25,6 +25,7 @@ import {
   IndustriesWeServe,
   Chatbot
 } from "./components";
+import VerifyEmail from './components/verifyEmail';
 
 
 const router = createBrowserRouter([
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/internships",
     element: <Internship />
+  },
+  {
+    path: "/verifyEmail",
+    element: <VerifyEmail />
   },
 ]);
 

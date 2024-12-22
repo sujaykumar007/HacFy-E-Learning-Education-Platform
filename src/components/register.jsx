@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -15,6 +15,7 @@ const RegistrationPage = () => {
     confirmPassword: "",
     termsAndConditions: false,
   });
+  
   const [message, setMessage] = useState("");
 
   const handleInputChange = (e) => {
@@ -36,11 +37,11 @@ const RegistrationPage = () => {
 
     try {
       // Make POST request to backend
+      
       const response = await axios.post(
-        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
+        "http://localhost:9000/api/auth/register",
         formData
       );
-
       // Handle successful registration
       setMessage(response.data.message);
 
@@ -55,7 +56,8 @@ const RegistrationPage = () => {
       });
 
       if (response.status === 201) {
-        navigate("/login");
+        localStorage.setItem("email", response.data.email)
+        navigate("/verifyEmail");
       }
     } catch (error) {
       // Show error message from backend or a generic error
@@ -87,9 +89,9 @@ const RegistrationPage = () => {
           <h2 className="mt-6 text-3xl font-extrabold text-white">
             Create your account
           </h2>
-          <p className="mt-2 text-sm text-gray-400">
+          {/* <p className="mt-2 text-sm text-gray-400">
             Created for developers by developers
-          </p>
+          </p> */}
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md grid gap-6 shadow-sm -space-y-px">
@@ -155,7 +157,7 @@ const RegistrationPage = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <input
               id="termsAndConditions"
               name="termsAndConditions"
@@ -171,11 +173,11 @@ const RegistrationPage = () => {
             >
               I agree to the Terms & Conditions
             </label>
-          </div>
+          </div> */}
 
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md"
+            className="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md "
           >
             Create my account
           </button>
