@@ -39,7 +39,7 @@ const RegistrationPage = () => {
       // Make POST request to backend
       
       const response = await axios.post(
-        "http://localhost:9000/api/auth/register",
+        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
         formData
       );
       // Handle successful registration

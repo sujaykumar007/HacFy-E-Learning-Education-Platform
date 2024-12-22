@@ -26,7 +26,7 @@ const VerifyEmail = () => {
 
     try {
       const userEmail = localStorage.getItem("email")
-      const response = await axios.post('http://localhost:9000/api/auth/verifyEmail',{
+      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/verifyEmail',{
             email: userEmail,
             otp: formData.otp,
           }); 
