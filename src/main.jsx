@@ -26,7 +26,8 @@ import {
   Chatbot
 } from "./components";
 import VerifyEmail from './components/verifyEmail';
-
+import ResetPasswordEmail from './components/emailresetpassword';
+import OtpVerifyReset from './components/resetpasswordOtp';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,13 @@ const router = createBrowserRouter([
   {
     path: "/verifyEmail",
     element: <VerifyEmail />
+  }, {
+    path: "/fPass",
+    element: <ResetPasswordEmail/>
+  },
+  {
+    path: "/resetOtp",
+    element: <OtpVerifyReset />
   },
 ]);
 

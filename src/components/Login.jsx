@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios'; // Import axios
@@ -19,7 +19,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
+      const response = await axios.post('http://localhost:9000/api/auth/signin', { email, password });
       const { login,foundName,foundEmail,token} = response.data;
       
       if(response.status == 200) {
@@ -103,7 +103,7 @@ const LoginPage = () => {
               </label>
             </div>
 
-            <Link to="/Rpass" className="font-medium text-sm text-indigo-600 hover:text-indigo-500">
+            <Link to="/fPass" className="font-medium text-sm text-indigo-600 hover:text-indigo-500">
               Forgot your password?
             </Link>
           </div>

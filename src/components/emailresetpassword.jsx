@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-const VerifyEmail = () => {
+
+const ResetPasswordEmail = () => {
   const [formData, setFormData] = useState({
-    otp: '',
+    email:'',
   });
   const [loading, setLoading] = useState(false); // State for the loader
   const [error, setError] = useState(''); // State for error message
@@ -25,21 +26,19 @@ const VerifyEmail = () => {
     setError(''); // Clear previous errors
 
     try {
-      const userEmail = localStorage.getItem("email")
-      const response = await axios.post('http://localhost:9000/api/auth/verifyEmail',{
-            email: userEmail,
-            otp: formData.otp,
-          }); 
-      // console.log(response)
+      const {email } = formData;
+      const response = await axios.post("http://localhost:9000/api/auth/forgotPassword",{email}); 
+      
       if (response.data.valid) {
-        navigate('/login'); // Navigate to register page
+        localStorage.setItem("email", response.data.email)
+        navigate('/resetOtp'); 
       } else {
         setError('Invalid OTP. Please try again.');
       }
     } catch (err) {
       setError('Something went wrong. Please try again.');
     } finally {
-      setLoading(false); // Deactivate loader
+      setLoading(false); 
     }
   };
 
@@ -54,25 +53,22 @@ const VerifyEmail = () => {
         <div className="text-center mb-6">
           <img src="logo.png" alt="Phylum" className="mx-auto h-12 w-auto" />
           <h2 className="mt-6 text-3xl font-extrabold text-white">
-            Enter OTP
+            Enter your registerd email
           </h2>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="shadow-sm -space-y-px">
             <div className="rounded-lg">
-              <label htmlFor="otp" className="sr-only">
-                OTP
-              </label>
               <input
-                id="otp"
-                name="otp"
-                type="text"
-                autoComplete="one-time-code"
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
                 required
-                value={formData.otp}
+                value={formData.email}
                 onChange={handleInputChange}
                 className="rounded-sm appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="OTP sent to your mail"
+                placeholder="hacfy@gmail.com"
               />
             </div>
           </div>
@@ -108,22 +104,16 @@ const VerifyEmail = () => {
                   Verifying...
                 </div>
               ) : (
-                "Verify OTP"
+                "Send OTP"
               )}
             </button>
           </div>
         </form>
         <div className="text-center mt-6">
-          <Link
-            to="/emailconfirmation"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Change Email
-          </Link>
         </div>
       </div>
     </motion.div>
   );
 };
 
-export default VerifyEmail;
+export default ResetPasswordEmail;

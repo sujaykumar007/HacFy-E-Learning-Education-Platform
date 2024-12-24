@@ -18,7 +18,6 @@ const ResetPassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here, e.g., send data to the server
     console.log(formData);
   };
 

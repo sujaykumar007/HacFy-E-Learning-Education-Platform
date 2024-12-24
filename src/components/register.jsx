@@ -12,8 +12,7 @@ const RegistrationPage = () => {
     email: "",
     phone: "",
     password: "",
-    confirmPassword: "",
-    termsAndConditions: false,
+    confirmPassword: ""
   });
   
   const [message, setMessage] = useState("");
@@ -38,10 +37,8 @@ const RegistrationPage = () => {
     try {
       // Make POST request to backend
       
-      const response = await axios.post(
-        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
-        formData
-      );
+       const { fullName, email, phone, password } = formData;
+      const response = await axios.post("http://localhost:9000/api/auth/register",{fullName,email,phone,password});
       // Handle successful registration
       setMessage(response.data.message);
 
@@ -51,8 +48,7 @@ const RegistrationPage = () => {
         email: "",
         phone: "",
         password: "",
-        confirmPassword: "",
-        termsAndConditions: false,
+        confirmPassword: ""
       });
 
       if (response.status === 201) {
@@ -61,6 +57,7 @@ const RegistrationPage = () => {
       }
     } catch (error) {
       // Show error message from backend or a generic error
+      console.log(error)
       setMessage(
         error.response
           ? error.response.data.message
