@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios'; // Import axios
 import { arrow } from '../assets';
+import { BallTriangle } from "react-loader-spinner";
+
 
 const LoginPage = () => {
 
@@ -10,6 +12,7 @@ const LoginPage = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -18,16 +21,17 @@ const LoginPage = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(""); 
     try {
-      console.log(email,password);
-      const response = await axios.post('https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/signin', { email, password });
-      const { login,foundName,foundEmail} = response.data;
+      const response = await axios.post('http://localhost:9000/api/auth/signin', { email, password });
+      const { login,foundName,foundEmail,token} = response.data;
       
       if(response.status == 200) {
-        // Save the token in local storage
         localStorage.setItem('login', login);
         localStorage.setItem('name', foundName);
         localStorage.setItem('email', foundEmail);
+        localStorage.setItem('token', token);
         navigate('/');
       }
 
@@ -35,7 +39,26 @@ const LoginPage = () => {
       // Handle error (e.g., wrong credentials)
       setError('Invalid email or password');
     }
+    finally {
+      setLoading(false);
+    }
   };
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
+
 
   return (
     <motion.div
@@ -104,7 +127,7 @@ const LoginPage = () => {
               </label>
             </div>
 
-            <Link to="/Rpass" className="font-medium text-sm text-indigo-600 hover:text-indigo-500">
+            <Link to="/fPass" className="font-medium text-sm text-indigo-600 hover:text-indigo-500">
               Forgot your password?
             </Link>
           </div>

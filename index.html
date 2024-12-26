@@ -55,76 +55,76 @@
 
     <!-- JavaScript for Cursor Animation -->
     <script>
-      const canvas = document.getElementById('cursorCanvas');
-      const ctx = canvas.getContext('2d');
+      // const canvas = document.getElementById('cursorCanvas');
+      // const ctx = canvas.getContext('2d');
 
-      function setCanvasSize() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-      }
-      setCanvasSize();
-      window.addEventListener('resize', setCanvasSize);
+      // function setCanvasSize() {
+      //     canvas.width = window.innerWidth;
+      //     canvas.height = window.innerHeight;
+      // }
+      // setCanvasSize();
+      // window.addEventListener('resize', setCanvasSize);
 
-      let mouseX = 0;
-      let mouseY = 0;
-      let isMoving = false;
-      let restoreTimer = null;
+      // let mouseX = 0;
+      // let mouseY = 0;
+      // let isMoving = false;
+      // let restoreTimer = null;
 
-      window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-          isMoving = true;
+      // window.addEventListener('mousemove', (e) => {
+      //     mouseX = e.clientX;
+      //     mouseY = e.clientY;
+      //     isMoving = true;
           
-          if (restoreTimer) clearTimeout(restoreTimer);
+      //     if (restoreTimer) clearTimeout(restoreTimer);
           
-          restoreTimer = setTimeout(() => {
-              isMoving = false;
-          }, 100);
-      });
+      //     restoreTimer = setTimeout(() => {
+      //         isMoving = false;
+      //     }, 100);
+      // });
 
-      function lerp(start, end, t) {
-          return start * (1 - t) + end * t;
-      }
+      // function lerp(start, end, t) {
+      //     return start * (1 - t) + end * t;
+      // }
 
-      function drawArrow(x, y, size) {
-          ctx.save();
+      // function drawArrow(x, y, size) {
+      //     ctx.save();
           
-          ctx.lineWidth = 2;
+      //     ctx.lineWidth = 2;
           
-          if (isMoving) {
-              ctx.strokeStyle = '#00ff00';
-              ctx.fillStyle = '#00ff00';
-              ctx.shadowColor = '#00ff00';
-              ctx.shadowBlur = 6;
-          } else {
-              ctx.strokeStyle = '#00cc00';
-              ctx.fillStyle = '#00cc00';
-              ctx.shadowColor = '#00ff00';
-              ctx.shadowBlur = 3;
-          }
+      //     if (isMoving) {
+      //         ctx.strokeStyle = '#00ff00';
+      //         ctx.fillStyle = '#00ff00';
+      //         ctx.shadowColor = '#00ff00';
+      //         ctx.shadowBlur = 6;
+      //     } else {
+      //         ctx.strokeStyle = '#00cc00';
+      //         ctx.fillStyle = '#00cc00';
+      //         ctx.shadowColor = '#00ff00';
+      //         ctx.shadowBlur = 3;
+      //     }
           
-          ctx.beginPath();
-          ctx.moveTo(x, y - size);
-          ctx.lineTo(x - size/2, y);
-          ctx.lineTo(x + size/2, y);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-          ctx.restore();
-      }
+      //     ctx.beginPath();
+      //     ctx.moveTo(x, y - size);
+      //     ctx.lineTo(x - size/2, y);
+      //     ctx.lineTo(x + size/2, y);
+      //     ctx.closePath();
+      //     ctx.fill();
+      //     ctx.stroke();
+      //     ctx.restore();
+      // }
 
-      function animate() {
-          const currentPoint = {
-              x: lerp(mouseX, mouseX, 0.15),
-              y: lerp(mouseY, mouseY, 0.15)
-          };
+      // function animate() {
+      //     const currentPoint = {
+      //         x: lerp(mouseX, mouseX, 0.15),
+      //         y: lerp(mouseY, mouseY, 0.15)
+      //     };
 
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          drawArrow(mouseX, mouseY, 8);
-          requestAnimationFrame(animate);
-      }
+      //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+      //     drawArrow(mouseX, mouseY, 8);
+      //     requestAnimationFrame(animate);
+      // }
 
-      animate();
+      // animate();
     </script>
 
     <!-- Locomotive Scroll Script for Smooth Scrolling -->
