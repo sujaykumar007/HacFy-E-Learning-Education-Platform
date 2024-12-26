@@ -42,7 +42,7 @@ const OtpVerifyReset = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:9000/api/auth/resetPasswordOtp",
+        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/resetPasswordOtp",
         {
           email: userEmail,
           newPassword,
