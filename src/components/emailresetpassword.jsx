@@ -27,7 +27,7 @@ const ResetPasswordEmail = () => {
 
     try {
       const { email } = formData;
-      const response = await axios.post("http://localhost:9000/api/auth/forgotPassword", { email });
+      const response = await axios.post("https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/forgotPassword", { email });
 
       if (response.data.valid) {
         localStorage.setItem("email", response.data.email);
