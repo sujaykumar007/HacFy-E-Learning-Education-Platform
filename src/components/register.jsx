@@ -42,7 +42,7 @@ const RegistrationPage = () => {
 
     try {
       const { fullName, email, phone, password } = formData;
-      const response = await axios.post(" http://localhost:9000/api/auth/register",
+      const response = await axios.post(" https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
         { fullName, email, phone, password });
 
       setMessage(response.data.message);
