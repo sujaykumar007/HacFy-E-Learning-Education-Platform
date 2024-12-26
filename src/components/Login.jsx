@@ -3,6 +3,8 @@ import { Link,useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios'; // Import axios
 import { arrow } from '../assets';
+import { BallTriangle } from "react-loader-spinner";
+
 
 const LoginPage = () => {
 
@@ -10,6 +12,7 @@ const LoginPage = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -18,6 +21,8 @@ const LoginPage = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(""); 
     try {
       const response = await axios.post('http://localhost:9000/api/auth/signin', { email, password });
       const { login,foundName,foundEmail,token} = response.data;
@@ -34,7 +39,26 @@ const LoginPage = () => {
       // Handle error (e.g., wrong credentials)
       setError('Invalid email or password');
     }
+    finally {
+      setLoading(false);
+    }
   };
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
+
 
   return (
     <motion.div

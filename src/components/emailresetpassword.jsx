@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
-
+import { BallTriangle } from "react-loader-spinner";
 
 const ResetPasswordEmail = () => {
   const [formData, setFormData] = useState({
-    email:'',
+    email: "",
   });
   const [loading, setLoading] = useState(false); // State for the loader
-  const [error, setError] = useState(''); // State for error message
+  const [error, setError] = useState(""); // State for error message
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -23,24 +23,42 @@ const ResetPasswordEmail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Activate loader
-    setError(''); // Clear previous errors
+    setError(""); // Clear previous errors
 
     try {
-      const {email } = formData;
-      const response = await axios.post("http://localhost:9000/api/auth/forgotPassword",{email}); 
-      
+      const { email } = formData;
+      const response = await axios.post("http://localhost:9000/api/auth/forgotPassword", { email });
+
       if (response.data.valid) {
-        localStorage.setItem("email", response.data.email)
-        navigate('/resetOtp'); 
+        localStorage.setItem("email", response.data.email);
+        navigate("/resetOtp");
       } else {
-        setError('Invalid OTP. Please try again.');
+        setError("Invalid OTP. Please try again.");
+        navigate("/resetPasswordEmail");
       }
     } catch (err) {
-      setError('Something went wrong. Please try again.');
+      setError("Something went wrong. Please try again.");
+      navigate("/resetPasswordEmail");
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
+
+  // Show full-page loader while loading
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -53,7 +71,7 @@ const ResetPasswordEmail = () => {
         <div className="text-center mb-6">
           <img src="logo.png" alt="Phylum" className="mx-auto h-12 w-auto" />
           <h2 className="mt-6 text-3xl font-extrabold text-white">
-            Enter your registerd email
+            Enter your registered email
           </h2>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -79,38 +97,11 @@ const ResetPasswordEmail = () => {
               disabled={loading}
               className="group ca relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              {loading ? (
-                <div className="flex items-center">
-                  <svg
-                    className="animate-spin h-5 w-5 mr-3 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                    ></path>
-                  </svg>
-                  Verifying...
-                </div>
-              ) : (
-                "Send OTP"
-              )}
+              Send OTP
             </button>
           </div>
         </form>
-        <div className="text-center mt-6">
-        </div>
+        <div className="text-center mt-6"></div>
       </div>
     </motion.div>
   );

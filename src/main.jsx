@@ -18,7 +18,6 @@ import {
   LoginPage,
   RegistrationPage,
   PageNotFound,
-  ResetPassword,
   ContactMe,
   Internship,
   Blog,
@@ -74,10 +73,6 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <RegistrationPage />
-  },
-  {
-    path: "/Rpass",
-    element: <ResetPassword />
   },
   {
     path: "/internships",

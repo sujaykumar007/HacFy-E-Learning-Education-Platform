@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { BallTriangle } from "react-loader-spinner";
 import axios from "axios";
 
 const OtpVerifyReset = () => {
@@ -40,11 +41,14 @@ const OtpVerifyReset = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:9000/api/auth/resetPasswordOtp", {
-        email: userEmail,
-        newPassword,
-        otp,
-      });
+      const response = await axios.post(
+        "http://localhost:9000/api/auth/resetPasswordOtp",
+        {
+          email: userEmail,
+          newPassword,
+          otp,
+        }
+      );
       if (response.data.valid) {
         navigate("/login");
       } else {
@@ -56,6 +60,21 @@ const OtpVerifyReset = () => {
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -71,7 +90,6 @@ const OtpVerifyReset = () => {
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            
             <input
               id="otp"
               name="otp"
@@ -84,7 +102,6 @@ const OtpVerifyReset = () => {
             />
           </div>
           <div>
-            
             <input
               id="newPassword"
               name="newPassword"
@@ -97,7 +114,6 @@ const OtpVerifyReset = () => {
             />
           </div>
           <div>
-            
             <input
               id="confirmPassword"
               name="confirmPassword"
@@ -114,40 +130,17 @@ const OtpVerifyReset = () => {
             <button
               type="submit"
               disabled={loading}
-              className="relative w-full py-3 px-4 text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500"
+              className="w-full py-3 px-4 text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500"
             >
-              {loading ? (
-                <div className="flex items-center">
-                  <svg
-                    className="animate-spin h-5 w-5 mr-3 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v8h8a8 8 0 11-16 0z"
-                    ></path>
-                  </svg>
-                  Verifying...
-                </div>
-              ) : (
-                "Verify OTP"
-              )}
+              Verify OTP
             </button>
           </div>
         </form>
         <div className="text-center mt-6">
-          <Link to="/fPass" className="font-medium text-indigo-600 hover:text-indigo-500">
+          <Link
+            to="/fPass"
+            className="font-medium text-indigo-600 hover:text-indigo-500"
+          >
             Change Email
           </Link>
         </div>
