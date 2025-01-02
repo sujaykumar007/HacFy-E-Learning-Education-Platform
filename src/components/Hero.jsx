@@ -51,11 +51,11 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-col lg:flex-wrap min-h-screen lg:h-screen">
-      {/* Background Video (lazy load) */}
+    <div className="relative pt-4 sm:pt-28 md:pt-40 flex flex-col lg:flex-wrap min-h-[85vh] lg:h-screen">
+      {/* Background Video with adjusted mobile height */}
       <video
         ref={videoRef}
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute top-0 left-0 w-full h-[85vh] lg:h-full object-cover z-0"
         src={videoSrc}
         autoPlay
         loop
@@ -63,29 +63,30 @@ const Hero = () => {
         preload="true"
         playsInline
         controls={false}
-        style={{ pointerEvents: 'none' }}
+        style={{ 
+          pointerEvents: 'none',
+          objectPosition: 'center 20%' // Adjust video focus point
+        }}
       />
 
-      {/* Full overlay with slight darkness */}
-      <div className="absolute inset-0 bg-black/30 z-[1]" />
+      {/* Adjusted overlay heights for mobile */}
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
 
-      {/* Top gradient overlay */}
       <div 
-        className="absolute top-0 left-0 w-full h-[25%] z-[2]"
+        className="absolute top-0 left-0 w-full h-[15%] sm:h-[25%] z-[2]"
         style={{
           background: 'linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0) 100%)'
         }}
       />
 
-      {/* Bottom gradient overlay - adjusted to be less intense near logos */}
       <div 
-        className="absolute bottom-0 left-0 w-full h-[40%] z-[2]"
+        className="absolute bottom-0 left-0 w-full h-[30%] sm:h-[40%] z-[2]"
         style={{
           background: 'linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%)'
         }}
       />
 
-      <div className="md:w-3/4 lg:w-1/2 text-white px-6 md:px-20 lg:px-40 flex items-center z-[3] mb-20 lg:mb-0">
+      <div className="md:w-3/4 lg:w-1/2 text-white px-4 md:px-20 lg:px-40 flex items-center z-[3] mb-12 lg:mb-0">
         <div>
           <motion.div variants={textVariant()}>
             <h3 className={`${styles.heroHeadText} mt-32 sm:mt-40 md:mt-20`}>
