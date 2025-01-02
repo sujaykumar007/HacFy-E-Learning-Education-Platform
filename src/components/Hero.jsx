@@ -148,14 +148,25 @@ const Hero = () => {
                 <img src="/client4.png" alt="Client 4" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client5.png" alt="Client 5" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client6.png" alt="Client 6" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client7.png" alt="Client 7" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
               </div>
-              {/* Duplicate set - updated with better responsive handling */}
+              {/* Second set - updated with better responsive handling */}
               <div className="flex items-center justify-center flex-shrink-0">
                 <img src="/client1.png" alt="Client 1" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client2.png" alt="Client 2" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client4.png" alt="Client 4" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client5.png" alt="Client 5" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
                 <img src="/client6.png" alt="Client 6" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client7.png" alt="Client 7" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              {/* Third set - updated with better responsive handling */}
+              <div className="flex items-center justify-center flex-shrink-0">
+                <img src="/client1.png" alt="Client 1" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client2.png" alt="Client 2" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client4.png" alt="Client 4" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client5.png" alt="Client 5" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client6.png" alt="Client 6" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
+                <img src="/client7.png" alt="Client 7" className="mx-6 sm:mx-12 h-8 sm:h-12 md:h-16 lg:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           </div>
