@@ -18,14 +18,15 @@ import {
   LoginPage,
   RegistrationPage,
   PageNotFound,
-  ResetPassword,
   ContactMe,
   Internship,
   Blog,
   IndustriesWeServe,
   Chatbot
 } from "./components";
-
+import VerifyEmail from './components/verifyEmail';
+import ResetPasswordEmail from './components/emailresetpassword';
+import OtpVerifyReset from './components/resetpasswordOtp';
 
 const router = createBrowserRouter([
   {
@@ -74,12 +75,19 @@ const router = createBrowserRouter([
     element: <RegistrationPage />
   },
   {
-    path: "/Rpass",
-    element: <ResetPassword />
-  },
-  {
     path: "/internships",
     element: <Internship />
+  },
+  {
+    path: "/verifyEmail",
+    element: <VerifyEmail />
+  }, {
+    path: "/fPass",
+    element: <ResetPasswordEmail/>
+  },
+  {
+    path: "/resetOtp",
+    element: <OtpVerifyReset />
   },
 ]);
 

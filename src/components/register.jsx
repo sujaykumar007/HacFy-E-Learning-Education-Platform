@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { arrow } from "../assets";
 
+import { BallTriangle } from "react-loader-spinner";
+
 const RegistrationPage = () => {
   const navigate = useNavigate();
+  
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -13,8 +16,9 @@ const RegistrationPage = () => {
     phone: "",
     password: "",
     confirmPassword: "",
-    termsAndConditions: false,
   });
+
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleInputChange = (e) => {
@@ -28,44 +32,58 @@ const RegistrationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate confirm password
     if (formData.password !== formData.confirmPassword) {
       setMessage("Passwords do not match. Please try again.");
       return;
     }
 
-    try {
-      // Make POST request to backend
-      const response = await axios.post(
-        "https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
-        formData
-      );
+    setLoading(true);
+    setMessage("");
 
-      // Handle successful registration
+    try {
+      const { fullName, email, phone, password } = formData;
+      const response = await axios.post(" https://hacfy-e-learning-education-platform-i28h.onrender.com/api/auth/register",
+        { fullName, email, phone, password });
+
       setMessage(response.data.message);
 
-      // Clear form data upon successful registration
       setFormData({
         fullName: "",
         email: "",
         phone: "",
         password: "",
         confirmPassword: "",
-        termsAndConditions: false,
       });
 
       if (response.status === 201) {
-        navigate("/login");
+        localStorage.setItem("email", response.data.email);
+        navigate("/verifyEmail");
       }
     } catch (error) {
-      // Show error message from backend or a generic error
       setMessage(
         error.response
           ? error.response.data.message
           : "Registration failed. Please try again."
       );
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          visible={true}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -87,9 +105,6 @@ const RegistrationPage = () => {
           <h2 className="mt-6 text-3xl font-extrabold text-white">
             Create your account
           </h2>
-          <p className="mt-2 text-sm text-gray-400">
-            Created for developers by developers
-          </p>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md grid gap-6 shadow-sm -space-y-px">
@@ -154,25 +169,6 @@ const RegistrationPage = () => {
               />
             </div>
           </div>
-
-          <div className="flex items-center">
-            <input
-              id="termsAndConditions"
-              name="termsAndConditions"
-              type="checkbox"
-              required
-              checked={formData.termsAndConditions}
-              onChange={handleInputChange}
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-            />
-            <label
-              htmlFor="termsAndConditions"
-              className="ml-2 text-sm text-gray-200"
-            >
-              I agree to the Terms & Conditions
-            </label>
-          </div>
-
           <button
             type="submit"
             className="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md"
