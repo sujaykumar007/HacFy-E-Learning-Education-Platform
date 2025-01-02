@@ -22,7 +22,8 @@ import {
   Internship,
   Blog,
   IndustriesWeServe,
-  Chatbot
+  Chatbot,
+  VAPTServices
 } from "./components";
 import VerifyEmail from './components/verifyEmail';
 import ResetPasswordEmail from './components/emailresetpassword';
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
         <Project />
         <IndustriesWeServe />
         <Services />
+        <VAPTServices />
         <FAQs />
         <Number />
         <ClientSlider />
