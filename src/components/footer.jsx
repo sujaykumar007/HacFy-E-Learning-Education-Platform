@@ -100,12 +100,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto mt-8">
+      <div className="container mx-auto mt-8 px-4">
         <h2 className="text-xl font-bold mb-4 text-center">Our Location</h2>
         <div className="flex justify-center">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1924935408215!2d74.96508097602369!3d13.023410613738356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4ab005287a2a3%3A0xde10dc39da092988!2sHacfy%20office!5e0!3m2!1sen!2sin!4v1735543950379!5m2!1sen!2sin"
-            width="1000"
+            className="w-full max-w-[1000px]"
             height="300"
             style={{ border: 0, borderRadius: "10px" }}
             allowFullScreen=""
