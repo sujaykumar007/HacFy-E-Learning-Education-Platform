@@ -69,8 +69,8 @@ const Footer = () => {
         </div>
         <div className="w-full hidden lg:block md:w-1/3 lg:pl-24 xl:pl-36 mb-8 md:mb-0">
           <h2 className="text-xl font-bold">Contact Us</h2>
-          <p>Mangalore, DK, Karnataka</p>
-          <p>info.hacfy@gmail.com</p>
+          <p>Mijar,Moodabidri,Mangalore, DK, Karnataka</p>
+          <p>info@hacfy.com</p>
           <p>+91 8660767853</p>
         </div>
         <div className="w-full md:w-1/3 flex flex-wrap">
@@ -115,7 +115,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="border-t-[1px] border-third pt-2 font-medium flex justify-center text-center items-center">
-        © 2024 <span className="text-red-500 pl-2"> HacFy</span>, All Rights
+        © 2025 <span className="text-red-500 pl-2"> HacFy</span>, All Rights
         Reserved
       </p>
     </footer>
